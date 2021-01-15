@@ -2,10 +2,10 @@ const path = require('path');
 
 module.exports = {
 	mode: 'development',
-	entry: './app/js/data.js',
+	entry: './app/js/main.js',
 	output: {
 		path: path.resolve(__dirname, 'app/js'),
-		filename: 'data.min.js'
+		filename: 'main.min.js'
 	},
 
 };

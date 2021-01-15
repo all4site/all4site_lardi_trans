@@ -10,6 +10,5 @@
 </head>
 <body <?php body_class(); ?>>
 
-<?php dump($_POST)?>
 <div id="app">
 	<div><?php get_template_part( 'afsThemeOptions/template/header/headerMain');?></div>

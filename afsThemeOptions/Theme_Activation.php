@@ -115,7 +115,7 @@ class Theme_Activation
 
 	public function addAjaxUrlForFrontend()
 	{
-		wp_localize_script( 'vueJs', 'myajax',
+		wp_localize_script( 'mainData', 'myajax',
 			array(
 				'url' => admin_url( 'admin-ajax.php' )
 			)
