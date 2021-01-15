@@ -1,0 +1,7 @@
+{
+    "require": {
+        "respect/validation": "^2.1",
+        "symfony/console": "^5.2",
+        "siriusphp/validation": "^3.0"
+    }
+}
