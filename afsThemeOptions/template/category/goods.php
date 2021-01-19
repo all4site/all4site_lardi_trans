@@ -3,6 +3,7 @@ $addBodyType      = fw_get_db_settings_option( 'addBodyType' );
 $addCurrency      = fw_get_db_settings_option( 'addCurrency' );
 $addPaymentFrom   = fw_get_db_settings_option( 'addPaymentFrom' );
 $addPaymentMoment = fw_get_db_settings_option( 'addPaymentMoment' );
+
 ?>
 <?php get_header() ?>
 	<div class="wrapper mb-5 m-auto" is="goodsCreateUpdatePost" inline-template>

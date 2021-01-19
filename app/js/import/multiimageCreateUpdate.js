@@ -27,7 +27,8 @@ Vue.component('multiimageCreateUpdate', {
 
 			],
 
-			photoListenerVar: []
+			photoListenerVar: [],
+			temp: ''
 		}
 	},
 	created()
@@ -79,7 +80,6 @@ Vue.component('multiimageCreateUpdate', {
 			})
 
 		},
-
 		multipleImageUploadPreview(e)
 		{
 			var form = new FormData();
@@ -110,10 +110,8 @@ Vue.component('multiimageCreateUpdate', {
 				}
 			).then((response) =>
 				{
-
 					if (response.data.success === false)
 					{
-
 						let error = response.data.data
 						let errKey = Object.keys(error)
 						let errValue = Object.values(error)
@@ -135,7 +133,8 @@ Vue.component('multiimageCreateUpdate', {
 								this.files[i].logoPrev = URL.createObjectURL(file[i])
 							}
 
-							if (errKey.length < this.files.length){
+							if (errKey.length < this.files.length)
+							{
 								this.customClass = ''
 							}
 
@@ -146,9 +145,9 @@ Vue.component('multiimageCreateUpdate', {
 					{
 
 						this.$eventBus.$emit('multiImageArray', file);
-
 						for (let i = 0; i < file.length; i++)
 						{
+
 							this.files[i].showLogo = true
 							this.files[i].logoPrev = URL.createObjectURL(file[i])
 							this.customClass = ''
@@ -158,7 +157,13 @@ Vue.component('multiimageCreateUpdate', {
 				}
 			)
 		},
-
+		blobToFile(theBlob, fileName)
+		{
+			theBlob.lastModifiedDate = new Date();
+			theBlob.name = fileName;
+			theBlob.size = '173663'
+			return theBlob;
+		},
 		reset()
 		{
 			for (let i = 0; i < this.files.length; i++)

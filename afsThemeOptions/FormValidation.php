@@ -27,6 +27,12 @@ class FormValidation
 	{
 		foreach ( $data as $key => $value )
 		{
+			if ( $value === 'null' )
+			{
+
+				self::errorForJson( false, 'Поле не длжно быть пустым', $key );
+			}
+
 			if ( $key == 'description' )
 			{
 				self::errorForJson( v::length( 50, null )->validate( $value ), 'Минимум 50 символов', $key );
@@ -44,7 +50,7 @@ class FormValidation
 				self::errorForJson( v::notEmpty()->validate( $value ), 'Выберите момент оплаты', $key );
 			}
 
-			if ( $key == 'groupageCargo' || $key == 'key' )
+			if ( $key == 'groupageCargo' || $key == 'key' || $key == 'postID' || $key == 'multiImageUpload' || $key == 'formButton')
 			{
 				continue;
 			} else

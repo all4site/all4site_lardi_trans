@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "blueimp-file-upload": "^10.31.0",
     "bootstrap": "^4.5.3",
+    "formstone": "^1.4.18-1",
+    "jquery.fajax": "^1.1.6",
     "sortablejs": "^1.10.2",
     "tailwindcss": "^2.0.2",
     "vuedraggable": "^4.0.1",

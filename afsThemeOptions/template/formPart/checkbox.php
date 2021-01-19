@@ -5,5 +5,4 @@
 		Согласен в составе сборного груза
 		<span class="d-block check"></span>
 	</label>
-
 </div>

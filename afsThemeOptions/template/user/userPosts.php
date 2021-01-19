@@ -26,7 +26,6 @@ $countPosts = count_user_posts( get_current_user_id(), [ 'goods', 'transports', 
 	{
 		$currency = '$' . $data['costInput'];
 	}
-	dump(wp_nonce_url( home_url(), 'trash-post_' . $post->ID,'_wpnonce' ))
 	?>
 
 	<?php if ( $postStatus == 'draft' ): ?>

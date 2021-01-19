@@ -23,6 +23,7 @@
     --white: #ffffff;
     --viollet: #2C2034;
     --viollet-hover: #21192d;
+    --viollet-overlay: #21192d80;
     --primary-hover: #0056b3;
     --form-icon: #ced4da;
 }
@@ -237,7 +238,7 @@ a.text-dark:focus {
 
 .trash-form-icon {
     position: absolute;
-    bottom: 12px;
+    bottom: 21px;
     left: 40%;
     color: var(--form-icon);
 }
@@ -517,8 +518,8 @@ a.text-dark:focus {
 }
 
 .blockUpload {
-    margin-top: 8rem !important;
-    margin-bottom: -9rem !important;
+    margin-top: 9rem !important;
+    /*margin-bottom: -9rem !important;*/
 }
 
 .trash-form-icon-file_upload {
@@ -673,4 +674,45 @@ input::-webkit-calendar-picker-indicator {
     display: block !important;
     text-align: center !important;
     min-width: 70px !important;
+}
+.my-drop-file{
+    height: auto;
+    cursor: pointer;
+}
+
+.my-dropzone{
+    margin-top: 175px !important;
+    background: inherit !important;
+    border: none !important;
+    height: auto !important;
+    display: flex !important;
+    padding: 0 !important;
+}
+.h-fit-content{
+    height: fit-content;
+}
+
+.data-image{
+    display: flex;
+    flex-direction: column;
+    background: var(--viollet-overlay);
+    justify-content: center;
+    width: 90.3%;
+    height: 90%;
+    color: white;
+    padding: 0 1rem;
+    /* border-radius: 5px; */
+    position: absolute;
+    left: 5%;
+    top: 5%;
+}
+
+.dz-error-message{
+    color: red;
+}
+.w-35{
+    max-width: 33.333333%;
+}
+.my-height-170{
+    min-height: 170px;
 }
