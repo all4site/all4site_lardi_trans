@@ -44,8 +44,7 @@ Vue.component('multiimageCreateUpdate', {
 	},
 	mounted()
 	{
-
-		this.photoListenerVar
+		this.uploadFileAjax()
 	},
 	methods: {
 
@@ -157,13 +156,35 @@ Vue.component('multiimageCreateUpdate', {
 				}
 			)
 		},
-		blobToFile(theBlob, fileName)
+
+		uploadFileAjax()
 		{
-			theBlob.lastModifiedDate = new Date();
-			theBlob.name = fileName;
-			theBlob.size = '173663'
-			return theBlob;
+			var form = new FormData();
+			let postID = document.getElementById('postID')
+			form.append('action', 'uploadExistingFiles')
+			form.append('postID', postID.value)
+
+			axios.post(myajax.url,
+				form, {
+					headers: {
+						'Content-Type': 'multipart/form-data'
+					},
+				}).then((response) =>
+			{
+				if (response.data.success == true)
+				{
+					let res = response.data.data
+					for (let i = 0; i < res.length; i++)
+					{
+						this.files[i].showLogo = true
+						this.files[i].logoPrev = res[i].url
+					}
+				}else {
+					return false
+				}
+			})
 		},
+
 		reset()
 		{
 			for (let i = 0; i < this.files.length; i++)

@@ -1,13 +1,44 @@
 Vue.component('createAndUpdatePost', {
 	data()
 	{
-		return {}
+		return {
+			checked: ''
+		}
 	},
 	mounted()
 	{
-
+		// this.checkbox()
 	},
 	methods: {
+		checkbox()
+		{
+			var form = new FormData();
+			var form = new FormData();
+			let postID = document.getElementById('postID')
+			form.append('postID', postID.value)
+			form.append('action', 'updateCheckbox');
+
+			axios.post(myajax.url,
+				form, {
+					headers: {
+						'Content-Type': 'multipart/form-data'
+					},
+				})
+				.then((responce) =>
+				{
+					if (responce.data.success == true)
+					{
+							this.checked = responce.data.data
+						console.log(this.checked)
+
+					} else
+					{
+						return false
+					}
+
+
+				})
+		},
 		getFormData()
 		{
 

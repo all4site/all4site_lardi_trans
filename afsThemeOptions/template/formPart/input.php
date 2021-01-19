@@ -6,5 +6,5 @@
 		name="<?php echo $args['args'] ?>"
 		id="<?php echo $args['args'] ?>"
 		value="<?php echo $args['value']?>"
-		class="form-control">
+		class="form-control <?php echo $args['input-class']?>">
 </div>

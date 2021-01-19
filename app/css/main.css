@@ -716,3 +716,6 @@ input::-webkit-calendar-picker-indicator {
 .my-height-170{
     min-height: 170px;
 }
+.my-label-span-class{
+    min-width: 80px;
+}

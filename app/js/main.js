@@ -1,7 +1,7 @@
 import './import/multiimageCreateUpdate'
-import './import/transportCreateUpdatePost'
-import './import/goodsCreateUpdatePost'
 import './import/createAndUpdatePost'
+// import './import/transportCreateUpdatePost'
+// import './import/goodsCreateUpdatePost'
 
 
 Vue.component('menuCategories', {

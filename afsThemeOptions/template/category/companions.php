@@ -1,3 +1,4 @@
+<?php $postId = ! empty( $_GET['postid'] ) ? strtok( $_GET['postid'], '?' ) : ''; ?>
 <div class="wrapper mb-5 m-auto" is="createAndUpdatePost" inline-template>
 	<div class="container-fluid">
 		<div class="row  bg-grey-light">
@@ -10,9 +11,9 @@
 					<?php wp_nonce_field( 'companions', 'companions' ) ?>
 					<input type="text" hidden name="action" value="createAndUpdatePost">
 					<input type="text" hidden name="category" value="companions">
-					<input type="text" hidden name="postID" value="">
+					<input type="text" hidden name="postID" value="<?php echo $postId ?>" id="postID">
 
-					<?php get_template_part( 'afsThemeOptions/template/multiImageUpload/multiImageUploadUpdate' ) ?>
+					<?php get_template_part( 'afsThemeOptions/template/formPart/fileUpload','', $args['photo']) ?>
 
 					<?php get_template_part( 'afsThemeOptions/template/formPart/input', '', [
 						'title'        => 'Заголовок',

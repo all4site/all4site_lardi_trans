@@ -12,7 +12,8 @@ require_once get_template_directory() . '/afsThemeOptions/FormSanitize.php';
 require_once get_template_directory() . '/afsThemeOptions/FormValidation.php';
 require_once get_template_directory() . '/afsThemeOptions/PostDeleteAndEdit.php';
 require_once get_template_directory() . '/afsThemeOptions/PostDeleteAndEdit.php';
-require_once get_template_directory() . '/afsThemeOptions/ThemeApi.php';
+
+
 //AJAX
 require_once get_template_directory() . '/afsThemeOptions/ajax/passwordChange.php';
 require_once get_template_directory() . '/afsThemeOptions/ajax/userDataForm.php';
@@ -24,5 +25,7 @@ require_once get_template_directory() . '/afsThemeOptions/ajax/goodsUpdatePost.p
 require_once get_template_directory() . '/afsThemeOptions/ajax/multiimageCreateUpdate.php';
 require_once get_template_directory() . '/afsThemeOptions/ajax/transportCreatePost.php';
 require_once get_template_directory() . '/afsThemeOptions/ajax/createAndUpdatePost.php';
+require_once get_template_directory() . '/afsThemeOptions/ajax/uploadExistingFiles.php';
+require_once get_template_directory() . '/afsThemeOptions/ajax/updateCheckbox.php';
 
 

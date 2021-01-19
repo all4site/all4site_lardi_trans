@@ -35,7 +35,7 @@ class PostDeleteAndEdit
 
 	public function publishPost()
 	{
-		if ( ! empty( $_POST['publishh'] ) && $_POST['publish'] != '' )
+		if ( ! empty( $_POST['publish'] ) && $_POST['publish'] != '' )
 		{
 			$postID = $_POST['publish'];
 			wp_update_post( [
