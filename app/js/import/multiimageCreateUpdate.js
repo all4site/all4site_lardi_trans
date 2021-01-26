@@ -3,60 +3,15 @@ Vue.component('multiimageCreateUpdate', {
 	{
 		return {
 			spiner: false,
-			customClass: '',
-			finalImageArr: [],
-			files: [
-				{
-					name: 'file-0',
-					showLogo: false,
-					logoPrev: null,
-					error: ''
-				},
-				{
-					name: 'file-1',
-					showLogo: false,
-					logoPrev: null,
-					error: ''
-				},
-				{
-					name: 'file-2',
-					showLogo: false,
-					logoPrev: null,
-					error: ''
-				},
-
-			],
-
-			photoListenerVar: [],
-			temp: ''
 		}
 	},
-	created()
-	{
-		this.$eventBus.$on('uploadPhotoFronCustomFields', this.photoListener);
 
-	},
-	beforeDestroy()
-	{
-		this.$eventBus.$on('uploadPhotoFronCustomFields');
-
-
-	},
 	mounted()
 	{
-		this.uploadFileAjax()
+		// this.uploadFileAjax()
+		this.deleteImage()
 	},
 	methods: {
-
-		photoListener(data)
-		{
-			this.photoListenerVar = data
-			for (let i = 0; i < data.length; i++)
-			{
-				this.files[i].logoPrev = data[i].url
-				this.files[i].showLogo = true
-			}
-		},
 
 		dragImage()
 		{
@@ -64,33 +19,20 @@ Vue.component('multiimageCreateUpdate', {
 			var sort = Sortable.create(player, {
 				group: '.drag-el',
 				animation: 20,
-				onEnd: (evt) =>
-				{
-
-					let tempData = document.querySelectorAll('#drop-zone > div')
-
-					for (var i = 0; i < tempData.length; i++)
-					{
-						let id = tempData[i].id
-						this.finalImageArr[i] = id
-					}
-					this.$eventBus.$emit('multiImageArraySort', this.finalImageArr);
-				},
 			})
 
 		},
+
 		multipleImageUploadPreview(e)
 		{
-			var form = new FormData();
 			let file = e.target.files
-
+			var form = new FormData();
 			for (let i = 0; i < file.length; i++)
 			{
-				form.append(this.files[i].name, file[i]);
+				form.append([i], file[i]);
 			}
 
 			form.append('action', 'multiimageCreateUpdate');
-
 
 			axios.post(myajax.url,
 				form, {
@@ -112,49 +54,70 @@ Vue.component('multiimageCreateUpdate', {
 					if (response.data.success === false)
 					{
 						let error = response.data.data
-						let errKey = Object.keys(error)
-						let errValue = Object.values(error)
-						let map = new Map(Object.entries(error))
-
-						for (let i = 0; i < file.length; i++)
-						{
-
-
-							if (map.get(this.files[i].name))
-							{
-								this.files[i].showLogo = true
-								this.files[i].error = error[this.files[i].name]
-								this.customClass = 'empty-image'
-							} else
-							{
-
-								this.files[i].showLogo = true
-								this.files[i].logoPrev = URL.createObjectURL(file[i])
-							}
-
-							if (errKey.length < this.files.length)
-							{
-								this.customClass = ''
-							}
-
-						}
+						this.previewImages(e, error)
 					}
 
 					if (response.data.success === true)
 					{
-
-						this.$eventBus.$emit('multiImageArray', file);
-						for (let i = 0; i < file.length; i++)
-						{
-
-							this.files[i].showLogo = true
-							this.files[i].logoPrev = URL.createObjectURL(file[i])
-							this.customClass = ''
-						}
-
+						this.previewImages(e)
 					}
 				}
 			)
+		},
+
+		previewImages(e, error = null)
+		{
+			let file = e.target.files
+			const preview = document.querySelector('#drop-zone');
+
+
+			for (let i = 0; i < file.length; i++)
+			{
+
+
+				if (error !== null && file[i].name === Object.keys(error)[i])
+				{
+
+					let reader = new FileReader();
+
+					reader.onload = () =>
+					{
+						preview.insertAdjacentHTML('afterbegin', `
+													<div class="position-relative col-md-4 overflow-hidden drag-el mt-1 p-1">
+														<div class="position-relative w-100 h-100 my-image-error-bg">
+															<i class="far fa-trash-alt cursor-pointer trash-form-icon-file_upload delete-image z-index-1" ></i>
+															<img src="http://larditrans.loc/wp-content/themes/all4site_lardi_trans/app/img/noLogo.png" name="` + file[i].name + `" class="w-100 h-100 h-100 object-fit-cover rounded test ">
+															<span class="my-image-name-error">` + file[i].name + `</span>
+															<span class="my-image-error">` + Object.values(error)[i] + `</span>
+															<span class="my-image-error-bg rounded"></span>
+														</div>
+													</div>`)
+					};
+
+					reader.readAsDataURL(file[i]);
+				} else
+				{
+					let reader = new FileReader();
+
+					reader.onload = () =>
+					{
+
+						preview.insertAdjacentHTML('afterbegin', `
+													<div class="position-relative col-md-4 overflow-hidden drag-el w-100 mt-1 p-1">
+														<div class="position-relative w-100 h-100">
+															<i class="far fa-trash-alt cursor-pointer trash-form-icon-file_upload delete-image z-index-1" ></i>
+															<img src="` + reader.result + `" name="` + file[i].name + `" class="w-100 h-100 h-100 object-fit-cover rounded test ">
+															<span class="my-image-name rounded-top ">` + file[i].name + `</span>
+														</div>
+													</div>`)
+					};
+
+					reader.readAsDataURL(file[i]);
+				}
+
+			}
+
+
 		},
 
 		uploadFileAjax()
@@ -179,33 +142,67 @@ Vue.component('multiimageCreateUpdate', {
 						this.files[i].showLogo = true
 						this.files[i].logoPrev = res[i].url
 					}
-				}else {
+				} else
+				{
 					return false
 				}
 			})
 		},
 
-		reset()
+		reset(e)
 		{
-			for (let i = 0; i < this.files.length; i++)
+			e.target.value = ''
+		},
+
+		deleteImage()
+		{
+			document.addEventListener('click', function (e)
 			{
-				this.files[i].logoPrev = ''
-				this.files[i].showLogo = false
-				this.files[i].error = ''
+				if (e.target.classList.contains('delete-image'))
+				{
+					e.preventDefault()
+					e.stopImmediatePropagation()
+					let removeDiv = e.target.parentNode.parentNode
+					removeDiv.remove()
+				}
+			})
+
+
+		},
+
+		async testUpload()
+		{
+			let form = new FormData()
+			form.append('action', 'uploadFileTest')
+
+			let images = document.querySelectorAll('#drop-zone img')
+
+			for (let i = 0; i < images.length; i++)
+			{
+				let temp = new File([await (await fetch(images[i].src)).blob()], images[i].name)
+				form.append([i], temp)
+
 			}
 
-			document.getElementById('customFile').value = '';
+			axios.post(myajax.url,
+				form, {
+					headers: {
+						'Content-Type': 'multipart/form-data'
+					},
+					onUploadProgress: ((progressEvent) =>
+					{
+						this.spiner = true
+					}),
+					onDownloadProgress: ((progressEvent) =>
+					{
+						this.spiner = false
+					}),
 
-		},
-
-		deleteImage(e)
-		{
-			let id = e.target.closest('div').id
-			this.files[id].logoPrev = ''
-			this.files[id].showLogo = false
-
-		},
-
+				}
+			).then((response) =>
+			{
+			})
+		}
 	},
 
 })

@@ -12,6 +12,7 @@ require_once get_template_directory() . '/afsThemeOptions/FormSanitize.php';
 require_once get_template_directory() . '/afsThemeOptions/FormValidation.php';
 require_once get_template_directory() . '/afsThemeOptions/PostDeleteAndEdit.php';
 require_once get_template_directory() . '/afsThemeOptions/PostDeleteAndEdit.php';
+require_once get_template_directory() . '/afsThemeOptions/userClass.php';
 
 
 //AJAX
@@ -27,5 +28,6 @@ require_once get_template_directory() . '/afsThemeOptions/ajax/transportCreatePo
 require_once get_template_directory() . '/afsThemeOptions/ajax/createAndUpdatePost.php';
 require_once get_template_directory() . '/afsThemeOptions/ajax/uploadExistingFiles.php';
 require_once get_template_directory() . '/afsThemeOptions/ajax/updateCheckbox.php';
+require_once get_template_directory() . '/afsThemeOptions/ajax/uploadFileTest.php';
 
 

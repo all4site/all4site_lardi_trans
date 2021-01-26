@@ -18,7 +18,7 @@ $countPosts = count_user_posts( get_current_user_id(), [ 'goods', 'transports', 
 	$photo          = fw_get_db_post_option( $postID, 'photo', true );
 	$postTypeLabel  = get_post_type_object( get_post_type() )->label;
 	$postStatus     = $args->post->post_status;
-	$updatePostLink = '/update?category=' . get_post_type() . '&postid=' . $postID . '?_wpnonce=' . wp_create_nonce( 'wp_rest' );
+	$updatePostLink = home_url() . '/update?category=' . get_post_type() . '&postid=' . $postID . '?_wpnonce=' . wp_create_nonce( 'wp_rest' );
 	if ( $data['currency'] == 'UA' )
 	{
 		$currency = $data['costInput'] . ' грн.';

@@ -18,30 +18,30 @@ function addPostWhenUserIsRegistering( $user_id )
 function createCategoryBlock()
 {
 	$dataCreate = [
-		'goods'                 => [
+		'goods'      => [
 			'name'  => __( 'Груз', 'lardi' ),
 			'image' => 'good',
-			'link'  => '/create?goods'
+			'link'  => home_url() . '/create/?goods'
 		],
-		'transports'            => [
+		'transports' => [
 			'name'  => __( 'Транспорт', 'lardi' ),
 			'image' => 'transport',
-			'link'  => '/create?transports'
+			'link'  => home_url() . '/create/?transports'
 		],
-		'officeTransportations' => [
+		'offices'    => [
 			'name'  => __( 'Перевозка офиса', 'lardi' ),
 			'image' => 'officeTransportation',
-			'link'  => '/create?officeTransportations'
+			'link'  => home_url() . '/create/?offices'
 		],
-		'passingCars'           => [
+		'cars'       => [
 			'name'  => __( 'Попутное авто', 'lardi' ),
 			'image' => 'passingCar',
-			'link'  => '/create?cars'
+			'link'  => home_url() . '/create/?cars'
 		],
-		'companions'            => [
+		'companions' => [
 			'name'  => __( 'Попутчик', 'lardi' ),
 			'image' => 'companion',
-			'link'  => '/create?companions'
+			'link'  => home_url() . '/create/?companions'
 		],
 	];
 
@@ -53,15 +53,15 @@ function linkInUserProfile()
 	$data = [
 		'myAnnouncements' => [
 			'name' => __( 'Мои обьявления', 'lardi' ),
-			'link' => '?userposts',
+			'link' => home_url() . '/user/?userposts',
 		],
 		'subscribe'       => [
 			'name' => __( 'Подписка', 'lardi' ),
-			'link' => '?subscribe',
+			'link' => home_url() . '/user/?subscribe',
 		],
 		'profileSetup'    => [
 			'name' => __( 'Настройка профиля', 'lardi' ),
-			'link' => '?profile',
+			'link' => home_url() . '/user/?profile',
 		],
 
 	];
@@ -72,7 +72,7 @@ function linkInUserProfile()
 function getCusctomFieldFromUserPost()
 {
 	$arg               = [
-		'post_type' => 'user',
+		'post_type' => 'users',
 		'author'    => get_current_user_id()
 	];
 	$postCurrentAuthor = new WP_Query( $arg );
@@ -84,7 +84,7 @@ function getCusctomFieldFromUserPost()
 function getPostIdFromUserPost()
 {
 	$arg  = [
-		'post_type' => 'user',
+		'post_type' => 'users',
 		'author'    => get_current_user_id()
 	];
 	$post = new WP_Query( $arg );
@@ -115,9 +115,9 @@ function getAllUserPosts()
 	//TODO Доделать вывод постов. Сейчас их нет
 	$currentUser = get_current_user_id();
 	$arg         = [
-		'post_type' => any,
-		'author'    => $currentUser,
-		'post_status' => ['draft ', 'publish ']
+		'post_type'   => any,
+		'author'      => $currentUser,
+		'post_status' => [ 'draft ', 'publish ' ]
 	];
 	$posts       = new WP_Query( $arg );
 

@@ -1,16 +1,16 @@
 <div class="col-md-8 bg-grey-light pt-5 pb-5 rounded-right-bottom">
 
 	<h4 class="text-center mb-5"><?php _e( 'Личные данные', 'lardi' ) ?></h4>
+
 	<div is="userData" inline-template>
-		<form action="" method="post" class="col-md-7 m-auto" @submit.prevent="submit">
+		<form action="" method="post" class="col-md-7 m-auto" @submit.prevent="submit" id="userData">
 
 			<?php get_template_part( 'afsThemeOptions/template/preloader/preloader' ) ?>
 
 			<div class="form-group">
 				<input type="text" class="form-control" placeholder="<?php _e( 'Имя', 'lardi' ) ?>"
 				       v-model="firstName"
-				       :name="firstNameData ='<?php echo ( $args['firstName'] ) ? $args['firstName'] : '' ?>'"
-				>
+				       :name="firstNameData ='<?php echo ( $args['firstName'] ) ? $args['firstName'] : '' ?>'">
 				<div v-if="firstNameError!=''" class="text-danger text-center">{{firstNameError}}</div>
 			</div>
 
@@ -33,9 +33,7 @@
 				       for="customFile"><?php _e( 'Выберите фото профиля', 'lardi' ) ?></label>
 				<input type="file" class="custom-file-input" id="customFile"
 				       @change="userLogoData"
-				       @click="reset"
-
-				>
+				       @click="reset">
 			</div>
 
 			<div v-if="userLogoShowBlock" class="position-relative mb-3">
@@ -73,7 +71,7 @@
 		<div>
 			<h4 class="text-center mt-8"><?php _e( 'Изменить пароль', 'lardi' ) ?></h4>
 			<p class="text-center mb-5"><?php _e( 'Пароль должен содержать не менее 6 символов.', 'lardi' ) ?></p>
-			<form action="" method="post" class="col-md-7 m-auto" @submit.prevent="passwordChange">
+			<form action="" method="post" class="col-md-7 m-auto" @submit.prevent="passwordChange" id="passwordChnage">
 
 				<?php echo get_template_part( 'afsThemeOptions/template/preloader/preloader' ) ?>
 

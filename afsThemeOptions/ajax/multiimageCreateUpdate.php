@@ -8,7 +8,7 @@ require_once ABSPATH . 'wp-admin/includes/media.php';
 function multiimageCreateUpdate()
 {
 	global $form_error;
-//	dump( $_FILES['blob'] );
+//	dump( $_FILES );
 //	dump( $_POST );
 
 

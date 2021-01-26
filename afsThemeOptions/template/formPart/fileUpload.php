@@ -1,4 +1,3 @@
-
 <div is="multiimageCreateUpdate" inline-template>
 	<div>
 		<div class="custom-file mb-3 h-auto my-height-170">
@@ -16,24 +15,25 @@
 
 			<input type="file" class="custom-file-input" id="customFile" name="multiImageUpload" @change="multipleImageUploadPreview" @click="reset" multiple>
 
-			<div class="col-md-12 px-0 d-flex blockUpload" id="drop-zone" @mouseover="dragImage">
+			<div class="col-md-12 px-0 d-flex blockUpload flex-wrap" id="drop-zone" @mouseover="dragImage" >
 
-				<div v-for="(file, index) in files" :key="file.name" v-if="file.showLogo"
-				     class="position-relative mx-0  col  overflow-hidden drag-el"
-				     :class="customClass"
-				     :id="index">
-					<input type="text" name="key[]" :value="index" hidden>
-
-					<i class="far fa-trash-alt trash-form-icon cursor-pointer trash-form-icon-file_upload" @click="deleteImage"></i>
-
-					<img :src="file.logoPrev" :name="file.name" class="w-100 h-100 h-100 object-fit-cover rounded">
-
-					<div v-if="file.error!=''" class="text-danger text-center image-error">{{file.error}}</div>
-				</div>
+<!---->
+<!--				<div v-for="(file, index) in files" :key="file.name" v-if="file.showLogo"-->
+<!--				     class="position-relative mx-0  col  overflow-hidden drag-el"-->
+<!--				     :class="customClass"-->
+<!--				     :id="index">-->
+<!--					<input type="text" name="key[]" :value="index" hidden>-->
+<!---->
+<!--					<i class="far fa-trash-alt trash-form-icon cursor-pointer trash-form-icon-file_upload" @click="deleteImage"></i>-->
+<!---->
+<!--					<img :src="file.logoPrev" :name="file.name" class="w-100 h-100 h-100 object-fit-cover rounded">-->
+<!---->
+<!--					<div v-if="file.error!=''" class="text-danger text-center image-error">{{file.error}}</div>-->
+<!--				</div>-->
 
 			</div>
 		</div>
-
+		<button type="submit" name="testSubmit" @click.prevent="testUpload">Submit</button>
 
 	</div>
 

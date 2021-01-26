@@ -1,5 +1,9 @@
-<?php $postId = ! empty( $_GET['postid'] ) ? strtok( $_GET['postid'], '?' ) : ''; ?>
-<?php //dump($args)?>
+<?php
+$postId       = ! empty( $_GET['postid'] ) ? strtok( $_GET['postid'], '?' ) : '';
+$categoryName = 'goods';
+//dump($args)
+?>
+
 
 <div class="wrapper mb-5 m-auto" is="createAndUpdatePost" inline-template>
 	<div class="container-fluid">
@@ -9,9 +13,9 @@
 				<p class="mt-4"><?php _e( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti, provident?', 'lardi' ) ?></p>
 
 				<form action="" method="post" class="mt-5 " id="globalForm" name="globalForm" @submit.prevent="getFormData">
-					<?php wp_nonce_field( 'goods', 'goods' ) ?>
+					<?php wp_nonce_field( $categoryName, $categoryName ) ?>
 					<input type="text" hidden name="action" value="createAndUpdatePost">
-					<input type="text" hidden name="category" value="goods">
+					<input type="text" hidden name="category" value="<?php echo $categoryName ?>">
 					<input type="text" hidden name="postID" value="<?php echo $postId ?>" id="postID">
 
 					<?php get_template_part( 'afsThemeOptions/template/formPart/fileUpload' ) ?>
@@ -76,23 +80,23 @@
 					</div>
 
 					<?php get_template_part( 'afsThemeOptions/template/formPart/input', 'label', [
-						'title'        => 'Масса',
-						'type'         => 'number',
-						'args'         => 'weight',
-						'value'        => $args['weight'],
-						'wrpper-class' => '',
-						'input-class'  => '',
-						'label-text'   => 'кг',
+						'title'            => 'Масса',
+						'type'             => 'number',
+						'args'             => 'weight',
+						'value'            => $args['weight'],
+						'wrpper-class'     => '',
+						'input-class'      => '',
+						'label-text'       => 'кг',
 						'label-span-class' => 'my-label-span-class justify-content-center'
 					] ) ?>
 					<?php get_template_part( 'afsThemeOptions/template/formPart/input', 'label', [
-						'title'        => 'Обьем',
-						'type'         => 'number',
-						'args'         => 'volume',
-						'value'        => $args['volume'],
-						'wrpper-class' => '',
-						'input-class'  => '',
-						'label-text'   => 'литры',
+						'title'            => 'Обьем',
+						'type'             => 'number',
+						'args'             => 'volume',
+						'value'            => $args['volume'],
+						'wrpper-class'     => '',
+						'input-class'      => '',
+						'label-text'       => 'литры',
 						'label-span-class' => 'my-label-span-class justify-content-center'
 					] ) ?>
 

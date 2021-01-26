@@ -3,28 +3,28 @@
 class Theme_Activation
 {
 	public $postType = [
-		'users'             => 'Пользователи',
-		'ads'               => 'Рекламма',
-		'subscribes'        => 'Подписка',
-		'goods'             => 'Груз',
-		'transports'        => 'Транспорт',
-		'ofTransportations' => 'Перевозка офиса',
-		'cars'              => 'Попутное авто',
-		'companions'        => 'Попутчик',
+		'users'      => 'Пользователи',
+		'ads'        => 'Рекламма',
+		'subscribes' => 'Подписка',
+		'goods'      => 'Груз',
+		'transports' => 'Транспорт',
+		'offices'    => 'Перевозка офиса',
+		'cars'       => 'Попутное авто',
+		'companions' => 'Попутчик',
 	];
 
 	public $page = [
-		'home'                 => 'Главная',
-		'user'                 => 'Пользователи',
-		'ad'                   => 'Рекламма',
-		'subscribe'            => 'Подписка',
-		'good'                 => 'Груз',
-		'transport'            => 'Транспорт',
-		'officeTransportation' => 'Перевозка офиса',
-		'car'                  => 'Попутное авто',
-		'companion'            => 'Попутчик',
-		'create'               => 'Создать',
-		'update'               => 'Обновить',
+		'home'      => 'Главная',
+		'user'      => 'Пользователи',
+		'ad'        => 'Рекламма',
+		'subscribe' => 'Подписка',
+		'good'      => 'Груз',
+		'transport' => 'Транспорт',
+		'office'    => 'Перевозка офиса',
+		'car'       => 'Попутное авто',
+		'companion' => 'Попутчик',
+		'create'    => 'Создать',
+		'update'    => 'Обновить',
 	];
 
 	public function __construct()
@@ -43,7 +43,6 @@ class Theme_Activation
 		add_filter( 'login_redirect', [ $this, 'filter_function_name_7309' ], 10, 3 );
 		//TODO Отключил скрытие технических страниц для разработки - НАДО ВКЛЮЧИТЬ
 //		add_action( 'pre_get_posts', [ $this, 'hideServicePage' ] );
-//		add_action( 'wp_loaded', [ $this, 'errorLoad' ] );
 	}
 
 	public function createCustomPostType()
@@ -51,28 +50,55 @@ class Theme_Activation
 
 		foreach ( $this->postType as $key => $value )
 		{
+			if ( $key == 'users' )
+			{
 
-			register_post_type( $key, array(
-				'labels'             => array(
-					'name'              => $value, // Основное название типа записи
-					'parent_item_colon' => '',
-					'menu_name'         => $value,
+				register_post_type( $key, array(
+					'labels'              => array(
+						'name'              => $value, // Основное название типа записи
+						'parent_item_colon' => '',
+						'menu_name'         => $value,
 
-				),
-				'public'             => true,
-				'publicly_queryable' => true,
-				'show_ui'            => true,
-				'show_in_menu'       => true,
-				'query_var'          => true,
-				'rewrite'            => true,
-				'capability_type'    => 'post',
-				'has_archive'        => true,
-				'hierarchical'       => false,
-				'menu_position'      => 20,
-				'supports'           => array( 'title', 'author' ),
+					),
+					'public'              => true,
+					'publicly_queryable'  => true,
+					'show_ui'             => true,
+					'show_in_menu'        => true,
+					'query_var'           => true,
+					'rewrite'             => true,
+					'capability_type'     => 'post',
+					'has_archive'         => true,
+					'hierarchical'        => false,
+					'menu_position'       => 20,
+					'exclude_from_search' => true,
+					'supports'            => array( 'title', 'author' ),
 //			'taxonomies'         => array( 'category' ),
-				'show_in_rest'       => true
-			) );
+					'show_in_rest'        => true
+				) );
+			} else
+			{
+				register_post_type( $key, array(
+					'labels'             => array(
+						'name'              => $value, // Основное название типа записи
+						'parent_item_colon' => '',
+						'menu_name'         => $value,
+
+					),
+					'public'             => true,
+					'publicly_queryable' => true,
+					'show_ui'            => true,
+					'show_in_menu'       => true,
+					'query_var'          => true,
+					'rewrite'            => true,
+					'capability_type'    => 'post',
+					'has_archive'        => true,
+					'hierarchical'       => false,
+					'menu_position'      => 20,
+					'supports'           => array( 'title', 'author' ),
+//			'taxonomies'         => array( 'category' ),
+					'show_in_rest'       => true
+				) );
+			}
 		}
 	}
 
@@ -120,13 +146,6 @@ class Theme_Activation
 				'url' => admin_url( 'admin-ajax.php' )
 			)
 		);
-	}
-
-	public function errorLoad()
-	{
-		//TODO Убрал загрузку через хук так как конфликтует с плагином
-		global $form_error;
-		$form_error = new WP_Error();
 	}
 
 	public function removeMenu()

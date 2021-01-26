@@ -95,7 +95,7 @@ class passwordValidation
 
 			if ( $value['size'] > $size )
 			{
-				$form_error->add( $key, __( 'Файл очень большой - ' . size_format( $value['size'], 2 ), 'lardi' ) );
+				$form_error->add(  $value['name'], __( 'Файл очень большой - ' . size_format( $value['size'], 2 ), 'lardi' ) );
 			}
 		}
 		return $form_error;

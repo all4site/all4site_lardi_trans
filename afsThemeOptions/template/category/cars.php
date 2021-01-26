@@ -1,13 +1,14 @@
 <?php
 $postId       = ! empty( $_GET['postid'] ) ? strtok( $_GET['postid'], '?' ) : '';
-$categoryName = 'companions';
+$categoryName = 'cars';
 //dump($args)
 ?>
+
 <div class="wrapper mb-5 m-auto" is="createAndUpdatePost" inline-template>
 	<div class="container-fluid">
 		<div class="row  bg-grey-light">
 			<div class="col-md-5 text-center m-auto py-4">
-				<h4 class="text-center font-weight-bold"><?php _e( 'Добавить объявление в категорию "Попутчик"', 'lardi' ) ?></h4>
+				<h4 class="text-center font-weight-bold"><?php _e( 'Добавить объявление в категорию "Попутное авто"', 'lardi' ) ?></h4>
 				<p class="mt-4"><?php _e( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti, provident?', 'lardi' ) ?></p>
 
 				<form action="" method="post" class="mt-5 " id="globalForm" name="globalForm" @submit.prevent="getFormData">

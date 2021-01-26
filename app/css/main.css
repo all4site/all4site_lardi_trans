@@ -305,7 +305,7 @@ a.text-dark:focus {
     width: 40px;
     height: 40px;
     background: var(--white);
-    display: inline-flex;
+    display: inline-flex !important;
     justify-content: center;
     align-items: center;
     border-radius: 100%;
@@ -523,8 +523,10 @@ a.text-dark:focus {
 }
 
 .trash-form-icon-file_upload {
-    left: 0% !important;
-    right: -65% !important;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    color: red;
 }
 
 .image-error {
@@ -666,21 +668,23 @@ input::-webkit-calendar-picker-indicator {
 .btn-primary:focus,
 .btn-primary.focus {
     color: var(--white) !important;
-    background-color:var(--primary) !important;
+    background-color: var(--primary) !important;
     border-color: none !important;
     box-shadow: none !important;
 }
-.my-input-group-text{
+
+.my-input-group-text {
     display: block !important;
     text-align: center !important;
     min-width: 70px !important;
 }
-.my-drop-file{
+
+.my-drop-file {
     height: auto;
     cursor: pointer;
 }
 
-.my-dropzone{
+.my-dropzone {
     margin-top: 175px !important;
     background: inherit !important;
     border: none !important;
@@ -688,11 +692,12 @@ input::-webkit-calendar-picker-indicator {
     display: flex !important;
     padding: 0 !important;
 }
-.h-fit-content{
+
+.h-fit-content {
     height: fit-content;
 }
 
-.data-image{
+.data-image {
     display: flex;
     flex-direction: column;
     background: var(--viollet-overlay);
@@ -707,15 +712,65 @@ input::-webkit-calendar-picker-indicator {
     top: 5%;
 }
 
-.dz-error-message{
+.dz-error-message {
     color: red;
 }
-.w-35{
+
+.w-35 {
     max-width: 33.333333%;
 }
-.my-height-170{
+
+.my-height-170 {
     min-height: 170px;
 }
-.my-label-span-class{
+
+.my-label-span-class {
     min-width: 80px;
+}
+
+.my-logout-hover:hover {
+    color: var(--primary-hover);
+}
+
+.my-image-name {
+    position: absolute;
+    left: 0;
+    color: var(--white);
+    text-align: center;
+    background: #00000075;
+    width: 100%;
+    font-size: 14px;
+
+}
+
+.my-image-name-error {
+    position: absolute;
+    left: 0;
+    color: var(--white);
+    text-align: center;
+    width: 100%;
+    font-size: 14px;
+    z-index: 1;
+}
+
+.my-image-error {
+    position: absolute;
+    left: 0;
+    color: var(--red);
+    text-align: center;
+    width: 100%;
+    top: 35%;
+    font-size: 14px;
+    z-index: 1;
+}
+
+.my-image-error-bg {
+    background: #0062cc50;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
 }

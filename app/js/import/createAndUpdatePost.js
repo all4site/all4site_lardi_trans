@@ -2,7 +2,7 @@ Vue.component('createAndUpdatePost', {
 	data()
 	{
 		return {
-			checked: ''
+			errorMessages: '',
 		}
 	},
 	mounted()
@@ -10,6 +10,26 @@ Vue.component('createAndUpdatePost', {
 		// this.checkbox()
 	},
 	methods: {
+		checkboxCheck(e)
+		{
+
+			let value = e.target.value
+			let target = e.target.id
+			if (value == 1)
+			{
+				document.getElementById(target).value = 0
+
+			} else
+			{
+				document.getElementById(target).value = 1
+			}
+		},
+		showDateTime(e)
+		{
+			let value = e.target.value
+			let target = e.target.id
+			document.getElementById(target).classList.add('opacity-1')
+		},
 		checkbox()
 		{
 			var form = new FormData();
@@ -28,7 +48,7 @@ Vue.component('createAndUpdatePost', {
 				{
 					if (responce.data.success == true)
 					{
-							this.checked = responce.data.data
+						this.checked = responce.data.data
 						console.log(this.checked)
 
 					} else
@@ -99,21 +119,6 @@ Vue.component('createAndUpdatePost', {
 							valisClass[0].classList.remove('is-valid');
 						}
 
-
-						let invalidBlock = document.getElementById('invalid-feedback')
-						let validdBlock = document.querySelectorAll('.valid-feedback')
-
-						for (let i = 0; i < validdBlock.length; i++)
-						{
-							console.log(validdBlock[i].remove())
-						}
-
-						if (invalidBlock !== null)
-						{
-							invalidBlock.remove()
-						}
-
-
 						for (let i = 6; i < myForm.length; i++)
 						{
 							let name = myForm.elements[i].name
@@ -128,14 +133,12 @@ Vue.component('createAndUpdatePost', {
 								{
 									let error = document.getElementById(name)
 									error.classList.add('is-invalid')
-									error.insertAdjacentHTML("afterend", '<div class="invalid-feedback" id="invalid-feedback">' + responce.data.data[name] + '</div>')
+									this.errorMessages = responce.data.data[name]
 									return false
 								} else
 								{
-									console.log(name)
 									let error = document.getElementById(name)
 									error.classList.add('is-valid')
-									error.insertAdjacentHTML("afterend", '<div class="valid-feedback" id="valid-feedback">Все ок</div>')
 								}
 							}
 

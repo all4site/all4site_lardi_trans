@@ -69,6 +69,14 @@ $options = [
 				'add-button-text' => __( 'Добавить марку автомобиля', 'lardi' ),
 				'sortable'        => true,
 			),
+			'addTransport' => array(
+				'type'            => 'addable-option',
+				'value'           => [],
+				'label'           => __( 'Добавить транспорт', 'lardi' ),
+				'desc'            => __( 'Добавить транспорт', 'lardi' ),
+				'add-button-text' => __( 'Добавить транспорт', 'lardi' ),
+				'sortable'        => true,
+			),
 			'addCurrency' => array(
 				'type'            => 'addable-option',
 				'value'           => [],

@@ -9,7 +9,7 @@ if ( ! empty( $postData ) )
 	$data = $postData;
 } else
 {
-	$data = '';
+	return $data;
 }
 if ( $currentUserId == $currentPostAuthorId )
 {

@@ -7,4 +7,5 @@
 		id="<?php echo $args['args'] ?>"
 		value="<?php echo $args['value']?>"
 		class="form-control <?php echo $args['input-class']?>">
+	<?php get_template_part('afsThemeOptions/template/formPart/formErrors')?>
 </div>
