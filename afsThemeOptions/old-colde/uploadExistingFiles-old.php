@@ -4,6 +4,7 @@ add_action( 'wp_ajax_nopriv_uploadExistingFiles', 'uploadExistingFiles' );
 
 function uploadExistingFiles()
 {
+
 	$postId = $_POST['postID'];
 	if ( ! empty( $postId ) )
 	{

@@ -1,56 +1,27 @@
-Vue.component('contactFormFooter', {
-	data()
-	{
-		return {
-			name: '',
-			email: '',
-			text: '',
-			spiner: false,
-			nameError: '',
-			emailError: '',
-		}
-	},
-	methods: {
-		cfFooter()
-		{
-			let form = new FormData();
-			form.append('name', this.name)
-			form.append('email', this.email)
-			form.append('text', this.text)
-			form.append('action', 'cfFooter')
-			axios.post(myajax.url,
-				form,
-				{
-					headers: {
-						'Content-Type': 'multipart/form-data'
-					},
-					onUploadProgress: ((progressEvent) =>
-					{
-						this.spiner = true
-					}),
-					onDownloadProgress: ((progressEvent) =>
-					{
-						this.spiner = false
-					}),
+import {HTTP} from './helpers/axiosBase'
+import {cleaarErrorMessages, myError, addDataToForm} from './helpers'
 
-				}
-			).then((response) =>
-			{
-				if (response.data.success === false)
+Vue.component('contactFormFooter', {
+	methods: {
+		cfFooter(e)
+		{
+			let form = addDataToForm(e.target, ['submit'], 'cfFooter')
+
+			HTTP.post('', form)
+				.then(response =>
 				{
-					this.nameError = response.data.data.nameRequire
-					this.emailError = response.data.data.emailRequire
-				}
-				if (response.data.success === true)
-				{
+					if (response.data.success === false)
+					{
+						cleaarErrorMessages()
+						myError(response, e.target)
+						return false
+					}
+
 					alert(response.data.data)
-					this.name = ''
-					this.email = ''
-					this.text = ''
-					this.nameError = ''
-					this.emailError = ''
-				}
-			})
+					cleaarErrorMessages()
+					e.target.reset()
+
+				})
 		}
 	}
 })

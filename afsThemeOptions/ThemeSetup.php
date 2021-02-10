@@ -1,6 +1,8 @@
 <?php
 
-class Theme_Activation
+namespace AFS;
+
+class ThemeSetup
 {
 	public $postType = [
 		'users'      => 'Пользователи',
@@ -37,10 +39,10 @@ class Theme_Activation
 		add_action( 'init', [ $this, 'createCustomPostType' ] );
 		add_action( 'after_switch_theme', [ $this, 'createPages' ] );
 		add_action( 'switch_theme', [ $this, 'deletePagesAndCustomPostType' ] );
-		add_action( 'wp_logout', [ $this, 'logoutRedirect' ] );
 		add_action( 'wp_enqueue_scripts', [ $this, 'addAjaxUrlForFrontend' ], 99 );
 		add_action( 'admin_menu', [ $this, 'removeMenu' ], 99 );
 		add_filter( 'login_redirect', [ $this, 'filter_function_name_7309' ], 10, 3 );
+		add_action( 'pre_get_posts', [ $this, 'paginationForArchive' ] );
 		//TODO Отключил скрытие технических страниц для разработки - НАДО ВКЛЮЧИТЬ
 //		add_action( 'pre_get_posts', [ $this, 'hideServicePage' ] );
 	}
@@ -72,7 +74,7 @@ class Theme_Activation
 					'menu_position'       => 20,
 					'exclude_from_search' => true,
 					'supports'            => array( 'title', 'author' ),
-//			'taxonomies'         => array( 'category' ),
+//			'taxonomies'         => array( 'archive' ),
 					'show_in_rest'        => true
 				) );
 			} else
@@ -95,7 +97,7 @@ class Theme_Activation
 					'hierarchical'       => false,
 					'menu_position'      => 20,
 					'supports'           => array( 'title', 'author' ),
-//			'taxonomies'         => array( 'category' ),
+//			'taxonomies'         => array( 'archive' ),
 					'show_in_rest'       => true
 				) );
 			}
@@ -131,12 +133,6 @@ class Theme_Activation
 			$postID = get_page_by_title( $key )->ID;
 			wp_delete_post( $postID );
 		}
-	}
-
-	public function logoutRedirect()
-	{
-		header( 'Location: /' );
-		exit;
 	}
 
 	public function addAjaxUrlForFrontend()
@@ -180,6 +176,20 @@ class Theme_Activation
 		return $query;
 	}
 
-}
+	public function paginationForArchive( $query )
+	{
 
-new Theme_Activation();
+		foreach ( $this->postType as $key => $value )
+		{
+			if ( ! is_admin() )
+			{
+				if ( $query->is_archive( $key ) || $query->is_category() )
+				{
+					set_query_var( 'posts_per_page', 1 );
+				}
+			}
+		}
+
+	}
+
+}

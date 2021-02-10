@@ -1,5 +1,6 @@
 <?php
 
+namespace AFS;
 
 class FormSanitize
 {
@@ -8,26 +9,38 @@ class FormSanitize
 	{
 		foreach ( $data as $key => $value )
 		{
-			$data[ $key ] = sanitize_text_field( $value );
-			if ( $key == 'description' )
-			{
+			switch ($key){
+				case 'description':
+					$data[ $key ] = sanitize_textarea_field( $value );
+					continue 2;
+				case 'lenth':
+					$data[ $key ] = absint( $value );
+					continue 2;
+				case 'width':
+					$data[ $key ] = absint( $value );
+					continue 2;
+				case 'height':
+					$data[ $key ] = absint( $value );
+					continue 2;
+				case 'weight':
+					$data[ $key ] = absint( $value );
+					continue 2;
+				case 'volume':
+					$data[ $key ] = absint( $value );
+					continue 2;
+				case 'costInput':
+					$data[ $key ] = absint( $value );
+					continue 2;
+				case 'email':
+					$data[ $key ] = sanitize_email( $value );
+					continue 2;
+				case 'name':
+					$data[ $key ] = sanitize_user( $value );
+					continue 2;
+				default:
+					$data[ $key ] = sanitize_text_field( $value );
 
-				$data[ $key ] = sanitize_textarea_field( $value );
 			}
-			if ( $key == 'lenth' || $key == 'width' || $key == 'height' || $key == 'weight' || $key == 'volume' || $key == 'costInput' )
-			{
-				$data[ $key ] = absint( $value );
-			}
-
-			if ( $key == 'email' )
-			{
-				$data[ $key ] = sanitize_email( $value );
-			}
-			if ( $key == 'name' )
-			{
-				$data[ $key ] = sanitize_user( $value );
-			}
-
 
 		}
 

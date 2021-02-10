@@ -1,7 +1,7 @@
 <div class="form-group position-relative <?php echo $args['wrpper-class'] ?>">
-	<select name="<?php echo $args['args'] ?>" id="<?php echo $args['args'] ?>" class="form-control text-secondary" type="select">
+	<select name="<?php echo $args['args'] ?>" id="<?php echo $args['args'] ?>" class="form-control text-secondary" type="select" <?php echo $args['vue-data']?>>
 
-		<option selected disabled value="false"><?php echo $args['title'] ?></option>
+		<option selected disabled value=""><?php echo $args['title'] ?></option>
 		<?php foreach ( $args['select-options'] as $key => $value ): ?>
 
 			<?php if ( ! empty( $args['value'] ) && $args['value'] == $value ): ?>

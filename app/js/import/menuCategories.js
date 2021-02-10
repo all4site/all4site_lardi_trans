@@ -4,14 +4,7 @@ Vue.component('menuCategories',{
 	{
 		return {
 			show: false,
-
 		}
 	},
-	methods: {
-		showCategories: function ()
-		{
-			this.show = true
-		},
 
-	}
 })

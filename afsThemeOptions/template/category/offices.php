@@ -44,40 +44,48 @@ $categoryName = 'offices';
 
 					] ) ?>
 					<?php get_template_part( 'afsThemeOptions/template/formPart/checkbox', '', [
-						'title'        => 'Погрузка',
-						'type'         => 'checkbox',
-						'args'         => 'loading',
-						'value'        => $args['loading'],
-						'wrpper-class' => 'col-md-6 mx-auto',
-						'input-class'  => '',
-						'label-span-class' => 'justify-content-end'
+						'title'            => 'Погрузка',
+						'type'             => 'checkbox',
+						'name'             => 'loading',
+						'id'               => 'loading',
+						'value'            => $args['loading'],
+						'wrpper-class'     => 'col-md-6 mx-auto',
+						'input-class'      => '',
+						'label-span-class' => 'justify-content-end',
+						'vue-data'         => '@click="sendCheckboxDate"'
 					] ) ?>
 					<?php get_template_part( 'afsThemeOptions/template/formPart/checkbox', '', [
-						'title'        => 'Разгрузка',
-						'type'         => 'checkbox',
-						'args'         => 'unloading',
-						'value'        => $args['unloading'],
-						'wrpper-class' => 'col-md-6 mx-auto',
-						'input-class'  => '',
-						'label-span-class' => 'justify-content-end'
+						'title'            => 'Разгрузка',
+						'type'             => 'checkbox',
+						'name'             => 'unloading',
+						'id'               => 'unloading',
+						'value'            => $args['unloading'],
+						'wrpper-class'     => 'col-md-6 mx-auto',
+						'input-class'      => '',
+						'label-span-class' => 'justify-content-end',
+						'vue-data'         => '@click="sendCheckboxDate"'
 					] ) ?>
 					<?php get_template_part( 'afsThemeOptions/template/formPart/checkbox', '', [
-						'title'        => 'Упаковка',
-						'type'         => 'checkbox',
-						'args'         => 'packaging',
-						'value'        => $args['packaging'],
-						'wrpper-class' => 'col-md-6 mx-auto',
-						'input-class'  => '',
-						'label-span-class' => 'justify-content-end'
+						'title'            => 'Упаковка',
+						'type'             => 'checkbox',
+						'name'             => 'packaging',
+						'id'               => 'packaging',
+						'value'            => $args['packaging'],
+						'wrpper-class'     => 'col-md-6 mx-auto',
+						'input-class'      => '',
+						'label-span-class' => 'justify-content-end',
+						'vue-data'         => '@click="sendCheckboxDate"'
 					] ) ?>
 					<?php get_template_part( 'afsThemeOptions/template/formPart/checkbox', '', [
-						'title'        => 'Такелажные работы',
-						'type'         => 'checkbox',
-						'args'         => 'riggingWorks',
-						'value'        => $args['riggingWorks'],
-						'wrpper-class' => 'col-md-6 mx-auto',
-						'input-class'  => '',
-						'label-span-class' => 'justify-content-end'
+						'title'            => 'Такелажные работы',
+						'type'             => 'checkbox',
+						'name'             => 'riggingWorks',
+						'id'               => 'riggingWorks',
+						'value'            => $args['riggingWorks'],
+						'wrpper-class'     => 'col-md-6 mx-auto',
+						'input-class'      => '',
+						'label-span-class' => 'justify-content-end',
+						'vue-data'         => '@click="sendCheckboxDate"'
 					] ) ?>
 
 					<?php get_template_part( 'afsThemeOptions/template/formPart/description', '', [

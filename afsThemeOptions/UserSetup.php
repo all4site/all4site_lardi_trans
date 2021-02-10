@@ -1,7 +1,8 @@
 <?php
 
+namespace AFS;
 
-class userClass
+class UserSetup
 {
 
 	public function __construct()
@@ -9,6 +10,8 @@ class userClass
 		add_action( 'user_register', [ $this, 'registerCustomPostTypeAfterUserRegistration' ] );
 		add_action( 'wp_logout', [ $this, 'logOutRedirect' ] );
 		add_action( 'init', [ $this, 'logOut' ] );
+		add_filter('uwp_login_redirect', [$this, 'uwpLoginRedirect'], 10, 1);
+
 	}
 
 	public function registerCustomPostTypeAfterUserRegistration( $user_id )
@@ -31,6 +34,7 @@ class userClass
 		update_post_meta( $posID, 'fw_options', $getPostMeta );
 		update_user_meta( $userData->ID, 'show_admin_bar_front', '' );
 	}
+
 	public function logOut()
 	{
 		if ( isset( $_POST['logoutBtn'] ) )
@@ -45,6 +49,8 @@ class userClass
 		exit;
 	}
 
+	public function uwpLoginRedirect($redirect_to){
+		$redirect_to = home_url() . '/user?profile'; //URL to redirect
+		return $redirect_to;
+	}
 }
-
-new userClass();

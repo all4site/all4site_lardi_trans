@@ -7,13 +7,13 @@ function uploadFileTest()
 	require_once ABSPATH . 'wp-admin/includes/image.php';
 	require_once ABSPATH . 'wp-admin/includes/file.php';
 	require_once ABSPATH . 'wp-admin/includes/media.php';
-	dump( $_FILES );
-	dump( $_POST );
+//	dump( $_FILES );
+//	dump( $_POST );
 	$file = $_FILES;
 
 	foreach ( $file as $key => $value )
 	{
-		dump($value);
+		dump( $value );
 		$atId = media_handle_sideload( $value, 1897 );
 		if ( is_wp_error( $atId ) )
 		{

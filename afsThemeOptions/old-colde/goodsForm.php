@@ -1,4 +1,4 @@
-<?php
+%<?php
 add_action( 'wp_ajax_goodsForm', 'goodsForm' );
 add_action( 'wp_ajax_nopriv_goodsForm', 'goodsForm' );
 require_once( ABSPATH . 'wp-admin/includes/image.php' );

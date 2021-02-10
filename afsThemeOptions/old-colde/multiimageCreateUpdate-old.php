@@ -11,14 +11,18 @@ function multiimageCreateUpdate()
 //	dump( $_FILES );
 //	dump( $_POST );
 
-
-	passwordValidation::multiUploadFileSize( $_FILES, 200000 );
-
-	if ( $form_error->has_errors() )
+	if ( count( $_FILES ) > 3 )
 	{
-		wp_send_json_error( errorForVue::errorToArray( $form_error->errors ) );
+		wp_send_json_error( [ 'images' => 'Очень много файлов' ] );
 	} else
 	{
-		wp_send_json_success();
+		passwordValidation::multiUploadFileSize( $_FILES, 200000 );
+		if ( $form_error->has_errors() )
+		{
+			wp_send_json_error( errorForVue::errorToArray( $form_error->errors ) );
+		} else
+		{
+			wp_send_json_success();
+		}
 	}
 }

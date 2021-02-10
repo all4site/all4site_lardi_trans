@@ -1,7 +1,8 @@
 <?php
 
+namespace AFS;
 
-class Theme_Routes
+class ThemeRoutes
 {
 	public function __construct()
 	{
@@ -38,5 +39,3 @@ class Theme_Routes
 	}
 
 }
-
-new Theme_Routes();

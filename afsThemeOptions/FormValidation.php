@@ -1,5 +1,6 @@
 <?php
 
+namespace AFS;
 use Respect\Validation\Validator as v;
 
 class FormValidation
@@ -27,35 +28,7 @@ class FormValidation
 	{
 		foreach ( $data as $key => $value )
 		{
-//			if ( $value === 'null' )
-//			{
-//
-//				self::errorForJson( false, 'Поле не длжно быть пустым', $key );
-//			}
 
-//			if ( $key == 'description' )
-//			{
-//				self::errorForJson( v::length( 50, null )->validate( $value ), 'Минимум 50 символов', $key );
-//			}
-//			if ( $key == 'currency' )
-//			{
-//				self::errorForJson( v::notEmpty()->validate( $value ), 'Выберите валюту', $key );
-//			}
-//			if ( $key == 'paymentFrom' )
-//			{
-//				self::errorForJson( v::notEmpty()->validate( $value ), 'Выберите форму оплаты', $key );
-//			}
-//			if ( $key == 'paymentMoment' )
-//			{
-//				self::errorForJson( v::notEmpty()->validate( $value ), 'Выберите момент оплаты', $key );
-//			}
-//			if ( $key == 'groupageCargo' || $key == 'key' || $key == 'postID' || $key == 'multiImageUpload' || $key == 'formButton' )
-//			{
-//				continue;
-//			} else
-//			{
-//				self::errorForJson( v::notEmpty()->validate( $value ), 'Поле не длжно быть пустым', $key );
-//			}
 			switch ( $key )
 			{
 				case 'currency':
@@ -71,6 +44,8 @@ class FormValidation
 					self::errorForJson( v::length( 50, null )->validate( $value ), 'Минимум 50 символов', $key );
 					break;
 				case  'groupageCargo':
+					continue 2;
+				case  '_wp_http_referer':
 					continue 2;
 				case 'key':
 					continue 2;

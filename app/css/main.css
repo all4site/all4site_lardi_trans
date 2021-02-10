@@ -33,14 +33,12 @@ html {
     font-family: 'IBM';
 }
 
-.ads-width {
-    max-width: 335px;
-}
-
 .wrapper {
     max-width: 1400px;
 }
-
+.asd-wrapper{
+    max-width: 335px;
+}
 .cursor-pointer {
     cursor: pointer;
 }
@@ -505,7 +503,7 @@ a.text-dark:focus {
 }
 
 .spiner {
-    position: absolute !important;
+    position: fixed !important;
     width: 100% !important;
     height: 100% !important;
     background: #f4f5f4ab !important;
@@ -773,4 +771,61 @@ input::-webkit-calendar-picker-indicator {
     left: 0;
     bottom: 0;
     right: 0;
+}
+
+.page-numbers {
+    padding: 0 5px;
+}
+
+.ml-md-05 {
+    margin-left: 0.10rem !important;
+}
+
+.mr-md-05 {
+    margin-right: 0.10rem !important;
+}
+
+.mx-md-05 {
+    margin-right: 0.10rem !important;
+    margin-left: 0.10rem !important;
+}
+
+.my-border {
+    border: 1px solid var(--secondary);
+}
+
+.my-border {
+    border-bottom: none;
+    border-right: none;
+}
+
+.my-border:nth-of-type(even) {
+    border-right: 1px solid var(--secondary);
+}
+
+.my-border:last-child,
+.my-border:nth-last-child(2) {
+    border-bottom: 1px solid var(--secondary);
+}
+.my-slick-dragging-off{
+    -webkit-user-drag: none !important;
+}
+.slick-dots li button:before{
+    font-size: 1.5rem !important;
+}
+
+.box{
+    background:var(--viollet);
+    width: 400px;
+    height: 220px;
+    z-index: 999;
+    right: 0;
+    bottom: 0;
+}
+.my-slider-image{
+    max-height: 300px;
+}
+.my-image{
+    max-height: 150px;
+    overflow: hidden;
 }

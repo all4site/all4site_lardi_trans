@@ -1,5 +1,6 @@
 <?php
 
+namespace AFS;
 
 class PostDeleteAndEdit
 {
@@ -8,6 +9,7 @@ class PostDeleteAndEdit
 		add_action( 'template_redirect', [ $this, 'deletePost' ] );
 		add_action( 'template_redirect', [ $this, 'draftPost' ] );
 		add_action( 'template_redirect', [ $this, 'publishPost' ] );
+		add_action( 'before_delete_post', [ $this, 'deleteImageFromPost' ] );
 	}
 
 	public function deletePost()
@@ -44,6 +46,13 @@ class PostDeleteAndEdit
 			] );
 		}
 	}
-}
 
-new PostDeleteAndEdit();
+	public function deleteImageFromPost( $id )
+	{
+		$attachments = get_attached_media( '', $id );
+		foreach ( $attachments as $attachment )
+		{
+			wp_delete_attachment( $attachment->ID, 'true' );
+		}
+	}
+}

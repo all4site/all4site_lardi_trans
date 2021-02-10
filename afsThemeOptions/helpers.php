@@ -112,14 +112,71 @@ function getCusctomFieldFromUserPostWithData( $postType )
 
 function getAllUserPosts()
 {
-	//TODO Доделать вывод постов. Сейчас их нет
 	$currentUser = get_current_user_id();
 	$arg         = [
-		'post_type'   => any,
-		'author'      => $currentUser,
-		'post_status' => [ 'draft ', 'publish ' ]
+		'post_type'      => 'any',
+		'author'         => $currentUser,
+		'post_status'    => [ 'draft ', 'publish ' ],
+		'posts_per_page' => 4,
+		'paged'          => get_query_var( 'paged' ) ?: 1
 	];
-	$posts       = new WP_Query( $arg );
+	$wp_query    = new WP_Query( $arg );
 
-	return $posts;
+	return $wp_query;
 }
+
+function my_pagenavi()
+{
+	global $wp_query;
+//	dump($wp_query);
+	$big = 999999999; // уникальное число для замены
+
+	$args = array(
+		'base'      => str_replace( $big, '%#%', get_pagenum_link( $big ) ),
+		'format'    => '',
+		'current'   => max( 1, get_query_var( 'paged' ) ),
+		'total'     => $wp_query->max_num_pages,
+		'type'      => 'plain',
+		'next_text' => 'Далее',
+		'prev_text' => 'Ранее'
+
+
+	);
+
+	$result = paginate_links( $args );
+
+	// удаляем добавку к пагинации для первой страницы
+	$result = preg_replace( '~/page/1/?([\'"])~', '\1', $result ); ?>
+
+	<div class="row col-md-12 mx-auto d-flex justify-content-center mt-4">
+		<?php echo $result ?>
+	</div>
+
+<?php }
+
+function currency( $costs, $currensy )
+{
+	switch ( $currensy )
+	{
+		case 'USD':
+			$cost = '$' . $costs;
+			break;
+		case 'UA':
+			$cost = $costs . 'грн.';
+			break;
+		default:
+			$cost = $costs . 'грн.';
+
+	}
+
+
+	return $cost;
+}
+
+
+
+
+
+
+
+

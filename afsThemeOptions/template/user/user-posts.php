@@ -3,22 +3,22 @@
  * @var $args WP_Query
  */
 $countPosts = count_user_posts( get_current_user_id(), [ 'goods', 'transports', 'cars', 'companions', 'oftransportations' ] );
-
+$wp_query = $args;
 ?>
 
 <div class="col-md-8 bg-grey-light pt-5 pb-5 rounded-right-bottom">
 	<?php if ( is_object( $args ) ): ?>
 
 	<span class="text-center d-block mb-4">Всего обьявлений: <?php echo $countPosts ?> </span>
-	<?php while ( $args->have_posts() ):
-	$args->the_post() ?>
+	<?php while ( $wp_query->have_posts() ):
+	$wp_query->the_post() ?>
 	<?php
 	$postID         = $args->post->ID;
 	$data           = fw_get_db_post_option( $postID, '', true );
 	$photo          = fw_get_db_post_option( $postID, 'photo', true );
 	$postTypeLabel  = get_post_type_object( get_post_type() )->label;
 	$postStatus     = $args->post->post_status;
-	$updatePostLink = home_url() . '/update?category=' . get_post_type() . '&postid=' . $postID . '?_wpnonce=' . wp_create_nonce( 'wp_rest' );
+	$updatePostLink = home_url() . '/update?archive=' . get_post_type() . '&postid=' . $postID . '?_wpnonce=' . wp_create_nonce( 'wp_rest' );
 	if ( $data['currency'] == 'UA' )
 	{
 		$currency = $data['costInput'] . ' грн.';
@@ -91,10 +91,9 @@ $countPosts = count_user_posts( get_current_user_id(), [ 'goods', 'transports', 
 		</div>
 
 		<?php endwhile; ?>
-		<?php wp_reset_query() ?>
+		<?php wp_reset_postdata(); ?>
+		<?php  my_pagenavi(); ?>
 		<?php endif; ?>
-
-
 
 		<?php if ( ! is_object( $args ) ): ?>
 			<h2><?php _e( 'У вас пока нет обьявлений', 'lardi' ) ?></h2>

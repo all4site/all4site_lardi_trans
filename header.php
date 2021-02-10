@@ -11,9 +11,7 @@
 </head>
 <body <?php body_class(); ?>>
 
-
-
+<?php get_template_part('afsThemeOptions/template/preloader/spinner')?>
 
 <div id="app">
 	<div><?php get_template_part( 'afsThemeOptions/template/header/headerMain' ); ?></div>
-</html>

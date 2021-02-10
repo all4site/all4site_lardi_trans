@@ -109,9 +109,9 @@ $categoryName = 'transports';
 					] ) ?>
 					<?php get_template_part( 'afsThemeOptions/template/formPart/select', '', [
 						'title'          => 'Тип загрузки',
-						'args'           => 'bodyType',
+						'args'           => 'loadingType',
 						'select-options' => fw_get_db_settings_option( 'addLoadingType' ),
-						'value'          => $args['bodyType'],
+						'value'          => $args['loadingType'],
 						'wrpper-class'   => '',
 						'input-class'    => ''
 

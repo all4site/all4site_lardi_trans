@@ -16,7 +16,7 @@ if ( $currentUserId == $currentPostAuthorId )
 	foreach ( createCategoryBlock() as $key => $value )
 	{
 
-		if ( $_GET['category'] == $key )
+		if ( $_GET['archive'] == $key )
 		{
 			get_template_part( 'afsThemeOptions/template/category/' . $key, '', $data );
 		}

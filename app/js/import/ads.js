@@ -3,7 +3,7 @@ Vue.component('adsBlock',{
 		{
 			return{
 			scrolling: '',
-			data: 'position-fixed ads-width',
+			data: 'position-fixed',
 			dataCss: ''
 			}
 		},
@@ -22,7 +22,7 @@ Vue.component('adsBlock',{
 				this.dataCss = point + 'px'
 			} else
 			{
-				this.data = 'position-fixed ads-width'
+				this.data = 'position-fixed'
 				this.dataCss = ''
 			}
 		}

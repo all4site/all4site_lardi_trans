@@ -45,7 +45,7 @@ $options = [
 		'title'   => esc_html__( 'Настройки обьявлений', 'workreap' ),
 		'type'    => 'tab',
 		'options' => array(
-			'addBodyType' => array(
+			'addBodyType'      => array(
 				'type'            => 'addable-option',
 				'value'           => [],
 				'label'           => __( 'Добавить тип кузова', 'lardi' ),
@@ -53,7 +53,7 @@ $options = [
 				'add-button-text' => __( 'Добавить тип кузова', 'lardi' ),
 				'sortable'        => true,
 			),
-			'addLoadingType' => array(
+			'addLoadingType'   => array(
 				'type'            => 'addable-option',
 				'value'           => [],
 				'label'           => __( 'Добавить тип загрузки', 'lardi' ),
@@ -61,7 +61,7 @@ $options = [
 				'add-button-text' => __( 'Добавить тип загрузки', 'lardi' ),
 				'sortable'        => true,
 			),
-			'addCarModel' => array(
+			'addCarModel'      => array(
 				'type'            => 'addable-option',
 				'value'           => [],
 				'label'           => __( 'Добавить марку автомобиля', 'lardi' ),
@@ -69,7 +69,7 @@ $options = [
 				'add-button-text' => __( 'Добавить марку автомобиля', 'lardi' ),
 				'sortable'        => true,
 			),
-			'addTransport' => array(
+			'addTransport'     => array(
 				'type'            => 'addable-option',
 				'value'           => [],
 				'label'           => __( 'Добавить транспорт', 'lardi' ),
@@ -77,7 +77,7 @@ $options = [
 				'add-button-text' => __( 'Добавить транспорт', 'lardi' ),
 				'sortable'        => true,
 			),
-			'addCurrency' => array(
+			'addCurrency'      => array(
 				'type'            => 'addable-option',
 				'value'           => [],
 				'label'           => __( 'Добавить валюту', 'lardi' ),
@@ -85,7 +85,7 @@ $options = [
 				'add-button-text' => __( 'Добавить валюту', 'lardi' ),
 				'sortable'        => true,
 			),
-			'addPaymentFrom' => array(
+			'addPaymentFrom'   => array(
 				'type'            => 'addable-option',
 				'value'           => [],
 				'label'           => __( 'Форма оплаты', 'lardi' ),
@@ -104,5 +104,190 @@ $options = [
 		),
 	],
 
+	'user_adds_filters' => [
+		'title'   => esc_html__( 'Настройки фильтров', 'lardi' ),
+		'type'    => 'tab',
+		'options' => array(
+
+			'lenth_filter' => [
+				'label'         => esc_html__( 'Длинна', 'workreap' ),
+				'type'          => 'addable-popup',
+				'value'         => array(),
+				'desc'          => esc_html__( 'Длинна', 'workreap' ),
+				'popup-options' => [
+					'name' => array(
+						'type'  => 'text',
+						'label' => esc_html__( 'Длинна', 'workreap' ),
+						'value' => '',
+						'desc'  => esc_html__( 'Длинна', 'workreap' ),
+					),
+					'from' => array(
+						'type'  => 'number',
+						'label' => esc_html__( 'Длинна от', 'workreap' ),
+						'value' => '',
+						'desc'  => esc_html__( 'Длинна от', 'workreap' ),
+					),
+					'to'   => array(
+						'type'  => 'number',
+						'label' => esc_html__( 'Длинна до', 'workreap' ),
+						'value' => '',
+						'desc'  => esc_html__( 'Длинна до', 'workreap' ),
+					),
+				],
+
+				'template' => "<div>Имя: {{-name}}</div>
+									<div>От м: {{-from}}</div>
+									<div>До м: {{-to}}</div>
+
+									",
+			],
+
+			'width_filter' => [
+				'label'         => esc_html__( 'Ширина', 'workreap' ),
+				'type'          => 'addable-popup',
+				'value'         => array(),
+				'desc'          => esc_html__( 'Ширина', 'workreap' ),
+				'popup-options' => [
+					'name' => array(
+						'type'  => 'text',
+						'label' => esc_html__( 'Ширина', 'workreap' ),
+						'value' => '',
+						'desc'  => esc_html__( 'Ширина', 'workreap' ),
+					),
+					'from' => array(
+						'type'  => 'number',
+						'label' => esc_html__( 'Ширина от', 'workreap' ),
+						'value' => '',
+						'desc'  => esc_html__( 'Ширина от', 'workreap' ),
+					),
+					'to'   => array(
+						'type'  => 'number',
+						'label' => esc_html__( 'Ширина до', 'workreap' ),
+						'value' => '',
+						'desc'  => esc_html__( 'Ширина до', 'workreap' ),
+					),
+				],
+
+				'template' => "<div>Имя: {{-name}}</div>
+									<div>От м: {{-from}}</div>
+									<div>До м: {{-to}}</div>
+
+									",
+			],
+
+			'height_fiter' => [
+				'label'         => esc_html__( 'Высота', 'workreap' ),
+				'type'          => 'addable-popup',
+				'value'         => array(),
+				'desc'          => esc_html__( 'Высота', 'workreap' ),
+				'popup-options' => [
+					'name' => array(
+						'type'  => 'text',
+						'label' => esc_html__( 'Высота', 'workreap' ),
+						'value' => '',
+						'desc'  => esc_html__( 'Высота', 'workreap' ),
+					),
+					'from' => array(
+						'type'  => 'number',
+						'label' => esc_html__( 'Высота от', 'workreap' ),
+						'value' => '',
+						'desc'  => esc_html__( 'Высота от', 'workreap' ),
+					),
+					'to'   => array(
+						'type'  => 'number',
+						'label' => esc_html__( 'Высота до', 'workreap' ),
+						'value' => '',
+						'desc'  => esc_html__( 'Высота до', 'workreap' ),
+					),
+				],
+
+				'template' => "<div>Имя: {{-name}}</div>
+									<div>От м: {{-from}}</div>
+									<div>До м: {{-to}}</div>
+
+									",
+			],
+
+			'weight_fiter' => [
+				'label'         => esc_html__( 'Масса', 'workreap' ),
+				'type'          => 'addable-popup',
+				'value'         => array(),
+				'desc'          => esc_html__( 'Масса', 'workreap' ),
+				'popup-options' => [
+					'name' => array(
+						'type'  => 'text',
+						'label' => esc_html__( 'Масса', 'workreap' ),
+						'value' => '',
+						'desc'  => esc_html__( 'Масса', 'workreap' ),
+					),
+					'from' => array(
+						'type'  => 'number',
+						'label' => esc_html__( 'Масса от', 'workreap' ),
+						'value' => '',
+						'desc'  => esc_html__( 'Масса от', 'workreap' ),
+					),
+					'to'   => array(
+						'type'  => 'number',
+						'label' => esc_html__( 'Масса до', 'workreap' ),
+						'value' => '',
+						'desc'  => esc_html__( 'Масса до', 'workreap' ),
+					),
+				],
+
+				'template' => "<div>Имя: {{-name}}</div>
+									<div>От м: {{-from}}</div>
+									<div>До м: {{-to}}</div>
+
+									",
+			],
+
+			'volume_fiter' => [
+				'label'         => esc_html__( 'Обьем', 'workreap' ),
+				'type'          => 'addable-popup',
+				'value'         => array(),
+				'desc'          => esc_html__( 'Обьем', 'workreap' ),
+				'popup-options' => [
+					'name' => array(
+						'type'  => 'text',
+						'label' => esc_html__( 'Обьем', 'workreap' ),
+						'value' => '',
+						'desc'  => esc_html__( 'Обьем', 'workreap' ),
+					),
+					'from' => array(
+						'type'  => 'number',
+						'label' => esc_html__( 'Обьем от', 'workreap' ),
+						'value' => '',
+						'desc'  => esc_html__( 'Обьем от', 'workreap' ),
+					),
+					'to'   => array(
+						'type'  => 'number',
+						'label' => esc_html__( 'Обьем до', 'workreap' ),
+						'value' => '',
+						'desc'  => esc_html__( 'Обьем до', 'workreap' ),
+					),
+				],
+
+				'template' => "<div>Имя: {{-name}}</div>
+									<div>От м: {{-from}}</div>
+									<div>До м: {{-to}}</div>
+
+									",
+			],
+
+
+		),
+	],
+
+	'post_options' => [
+		'title'   => esc_html__( 'Настройки постов', 'lardi' ),
+		'type'    => 'tab',
+		'options' => array(
+			'postPerPage' => array(
+				'label' => esc_html__( 'Количество на странице', 'lardi' ),
+				'type'  => 'number',
+				'value' => ''
+			),
+		),
+	],
 
 ];

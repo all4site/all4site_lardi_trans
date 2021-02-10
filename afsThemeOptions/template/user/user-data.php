@@ -5,61 +5,68 @@
 	<div is="userData" inline-template>
 		<form action="" method="post" class="col-md-7 m-auto" @submit.prevent="submit" id="userData">
 
-			<?php get_template_part( 'afsThemeOptions/template/preloader/preloader' ) ?>
+<!--			--><?php //get_template_part( 'afsThemeOptions/template/preloader/spinner' ) ?>
 
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="<?php _e( 'Имя', 'lardi' ) ?>"
-				       v-model="firstName"
-				       :name="firstNameData ='<?php echo ( $args['firstName'] ) ? $args['firstName'] : '' ?>'">
-				<div v-if="firstNameError!=''" class="text-danger text-center">{{firstNameError}}</div>
-			</div>
+			<?php get_template_part( 'afsThemeOptions/template/formPart/input', '', [
+				'title'        => 'Имя',
+				'type'         => 'text',
+				'args'         => 'firstName',
+				'value'        => $args['firstName'],
+				'wrpper-class' => '',
+				'input-class'  => ''
+			] ) ?>
 
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="<?php _e( 'Фамилия', 'lardi' ) ?>"
-				       v-model="lastName"
-				       :name="lastNameData ='<?php echo ( $args['lastName'] ) ? $args['lastName'] : '' ?>'">
-				<div v-if="lastNameError!=''" class="text-danger text-center">{{lastNameError}}</div>
-			</div>
+			<?php get_template_part( 'afsThemeOptions/template/formPart/input', '', [
+				'title'        => 'Фамилия',
+				'type'         => 'text',
+				'args'         => 'lastName',
+				'value'        => $args['lastName'],
+				'wrpper-class' => '',
+				'input-class'  => ''
+			] ) ?>
 
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="<?php _e( 'Никнейм', 'lardi' ) ?>"
-				       v-model="nickName"
-				       :name="nickNameData ='<?php echo ( $args['nickName'] ) ? $args['nickName'] : '' ?>'">
-				<div v-if="nickNameError!=''" class="text-danger text-center">{{nickNameError}}</div>
-			</div>
+			<?php get_template_part( 'afsThemeOptions/template/formPart/input', '', [
+				'title'        => 'Никнейм',
+				'type'         => 'text',
+				'args'         => 'nickName',
+				'value'        => $args['nickName'],
+				'wrpper-class' => '',
+				'input-class'  => ''
+			] ) ?>
 
-			<div class="custom-file mb-3">
-				<label class="custom-file-label"
-				       for="customFile"><?php _e( 'Выберите фото профиля', 'lardi' ) ?></label>
-				<input type="file" class="custom-file-input" id="customFile"
-				       @change="userLogoData"
-				       @click="reset">
-			</div>
+			<?php get_template_part( 'afsThemeOptions/template/formPart/oneImageUpload', '', [
+				'title'        => 'Выберите фото профиля',
+				'type'         => 'file',
+				'args'         => 'customFile',
+				'value'        => $args['customFile'],
+				'wrpper-class' => '',
+				'input-class'  => ''
+			] ) ?>
 
-			<div v-if="userLogoShowBlock" class="position-relative mb-3">
-				<i class="far fa-trash-alt trash-form-icon cursor-pointer" @click="deleteImage"></i>
-				<img :src="userLogoPreview" alt="" class="w-50 img-fluid img-thumbnail">
-			</div>
-
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="<?php _e( 'Город', 'lardi' ) ?>"
-				       v-model="userSity"
-				       :name="userSityData ='<?php echo ( $args['userSity'] ) ? $args['userSity'] : '' ?>'">
-			</div>
-
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="<?php _e( 'Телефон', 'lardi' ) ?>"
-				       v-model="userPhone"
-				       :name="userPhoneData ='<?php echo ( $args['userPhone'] ) ? $args['userPhone'] : '' ?>'">
-				<div v-if="userPhoneError!=''" class="text-danger text-center">{{userPhoneError}}</div>
-			</div>
-
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="<?php _e( 'E-mail', 'lardi' ) ?>"
-				       v-model="userEmail"
-				       :name="userEmailData ='<?php echo ( $args['userEmail'] ) ? $args['userEmail'] : '' ?>'">
-				<div v-if="userEmailError!=''" class="text-danger text-center">{{userEmailError}}</div>
-			</div>
+			<?php get_template_part( 'afsThemeOptions/template/formPart/input', '', [
+				'title'        => 'Город',
+				'type'         => 'text',
+				'args'         => 'userSity',
+				'value'        => $args['userSity'],
+				'wrpper-class' => '',
+				'input-class'  => ''
+			] ) ?>
+			<?php get_template_part( 'afsThemeOptions/template/formPart/input', '', [
+				'title'        => 'Телефон',
+				'type'         => 'text',
+				'args'         => 'userPhone',
+				'value'        => $args['userPhone'],
+				'wrpper-class' => '',
+				'input-class'  => ''
+			] ) ?>
+			<?php get_template_part( 'afsThemeOptions/template/formPart/input', '', [
+				'title'        => 'E-mail',
+				'type'         => 'text',
+				'args'         => 'userEmail',
+				'value'        => $args['userEmail'],
+				'wrpper-class' => '',
+				'input-class'  => ''
+			] ) ?>
 
 			<button type="submit" class="btn btn-primary btn-block mt-3" name="userDataBtn">
 				<?php _e( 'Сохранить', 'lardi' ) ?>

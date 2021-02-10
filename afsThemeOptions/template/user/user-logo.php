@@ -1,11 +1,6 @@
 <div class="col-md-4 bg-viollet rounded-left-top p-4 mySetup" id="userLogoImage">
 	<?php if ( ! empty( $args['userLogo']['attachment_id'] ) ) : ?>
-<!--		<img src="--><?php //echo $args['userLogo']['url']?><!--" alt=""  id="user-logo">-->
-		<?php echo wp_get_attachment_image( $args['userLogo']['attachment_id'], 'thumbnail', '', [
-			'class' => 'img-fluid rounded',
-			'id' => 'user-logo'
-		] ); ?>
-
+		<img src="<?php echo $args['userLogo']['url'] ?>" alt="" id="user-logo" class="img-fluid rounded">
 	<?php else: ?>
 		<img src="<?php echo get_template_directory_uri() . '/app/img/noLogo.png' ?>" alt=""
 		     class="img-fluid rounded">
@@ -16,7 +11,7 @@
 	</h3>
 
 	<p class="mt-3 text-capitalize  userName">
-		<span ><?php echo $args['nickName'] ?></span>
+		<span id="userNameLeft"><?php echo $args['nickName'] ?></span>
 	</p>
 
 	<p>
