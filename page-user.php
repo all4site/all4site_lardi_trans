@@ -1,8 +1,6 @@
 <?php get_header() ?>
 <?php
 $args          = getCusctomFieldFromUserPost();
-$adsData       = getCusctomFieldFromUserPostWithData( 'ads' );
-$subscribeData = getCusctomFieldFromUserPostWithData( 'subscribe' );
 $getString     = ( $_SERVER['QUERY_STRING'] ) ? $_SERVER['QUERY_STRING'] : '';
 $userPostData  = getAllUserPosts();
 ?>
@@ -20,7 +18,7 @@ $userPostData  = getAllUserPosts();
 			<?php endif; ?>
 
 			<?php if ( $getString === 'subscribe' ): ?>
-				<?php get_template_part( 'afsThemeOptions/template/user/user', 'subscribe', $subscribeData ); ?>
+				<?php get_template_part( 'afsThemeOptions/template/user/user', 'subscribe' ); ?>
 			<?php endif; ?>
 
 			<?php if ( isset( $_GET['userposts'] ) ): ?>
@@ -29,15 +27,7 @@ $userPostData  = getAllUserPosts();
 		</div>
 	</div>
 
-	<div class="container-fluid col-md-3 float-left" id="adsBlock" is="adsBlock" inline-template>
-		<div class="row position-relative">
-			<div class="asd-wrapper" :class="data" :style="{top: dataCss}">
-				<?php get_template_part( 'afsThemeOptions/template/adds/userProfile/add', 'one', $adsData ) ?>
-				<?php get_template_part( 'afsThemeOptions/template/adds/userProfile/add', 'two', $adsData ) ?>
-
-			</div>
-		</div>
-	</div>
+	<?php get_template_part( 'afsThemeOptions/template/adds/ads', 'right' ) ?>
 
 </div>
 

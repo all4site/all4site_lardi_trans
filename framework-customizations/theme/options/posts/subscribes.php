@@ -32,4 +32,16 @@ $options = [
 
 		),
 	),
+
+	'subscribeTextarea' => array(
+		'title'   => esc_html__( 'Описание', 'workreap' ),
+		'type'    => 'box',
+		'options' => array(
+			'textareaSubscribe' => array(
+				'label' => esc_html__( 'Описание', 'workreap' ),
+				'type'  => 'textarea',
+				'value' => ''
+			),
+		),
+	),
 ];

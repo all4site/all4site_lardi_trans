@@ -1,4 +1,4 @@
-<div class="col-md-4 bg-viollet rounded-left-top p-4 mySetup" id="userLogoImage">
+<div class="col-md-4 bg-primary rounded-left-top p-4 mySetup" id="userLogoImage">
 	<?php if ( ! empty( $args['userLogo']['attachment_id'] ) ) : ?>
 		<img src="<?php echo $args['userLogo']['url'] ?>" alt="" id="user-logo" class="img-fluid rounded">
 	<?php else: ?>
@@ -14,15 +14,34 @@
 		<span id="userNameLeft"><?php echo $args['nickName'] ?></span>
 	</p>
 
-	<p>
-		<b><?php _e( 'До конца подписки:', 'lardi' ) ?></b>
-		<span class="text-danger"><?php echo ( $args['subscribe'] ) ? $args['subscribe'] : 0 ?>
-			<?php _e( 'дней', 'lardi' ) ?>
+	<?php if ( fw_get_db_settings_option( 'subscribeOffOn' ) ): ?>
+		<p>
+			<b><?php _e( 'До конца подписки:&nbsp', 'lardi' ) ?></b>
+			<span class="text-danger">
+			<?php echo ( subscribeDateToNumber() ) ? subscribeDateToNumber() : 0 ?>
+			<?php
+
+			if ( subscribeDateToNumber() == '1' )
+			{
+				_e( 'день', 'lardi' );
+			}
+			if ( subscribeDateToNumber() > '1' && subscribeDateToNumber() <= '4' )
+			{
+				_e( 'дня', 'lardi' );
+			}
+			if ( subscribeDateToNumber() > '4' )
+			{
+				_e( 'дней', 'lardi' );
+			}
+
+
+			?>
 			</span>
-	</p>
+		</p>
+	<?php endif; ?>
 
 	<form action="" method="post">
-		<button class="btn btn-block btn-outline-primary mt-5 mb-3"
+		<button class="btn btn-block btn-outline-warning mt-5 mb-3"
 		        name="logoutBtn"><?php _e( 'Выйти', 'lardi' ); ?></button>
 	</form>
 

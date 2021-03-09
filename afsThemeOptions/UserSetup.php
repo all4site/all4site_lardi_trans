@@ -10,7 +10,7 @@ class UserSetup
 		add_action( 'user_register', [ $this, 'registerCustomPostTypeAfterUserRegistration' ] );
 		add_action( 'wp_logout', [ $this, 'logOutRedirect' ] );
 		add_action( 'init', [ $this, 'logOut' ] );
-		add_filter('uwp_login_redirect', [$this, 'uwpLoginRedirect'], 10, 1);
+		add_filter( 'uwp_login_redirect', [ $this, 'uwpLoginRedirect' ], 10, 1 );
 
 	}
 
@@ -45,12 +45,18 @@ class UserSetup
 
 	public function logOutRedirect()
 	{
-		wp_safe_redirect( home_url() );
-		exit;
+		if ( ! is_page( 'subscribe' ) )
+		{
+			wp_safe_redirect( home_url() );
+			exit;
+		}
+
 	}
 
-	public function uwpLoginRedirect($redirect_to){
+	public function uwpLoginRedirect( $redirect_to )
+	{
 		$redirect_to = home_url() . '/user?profile'; //URL to redirect
+
 		return $redirect_to;
 	}
 }

@@ -20,6 +20,8 @@ class StartTheme
 		require_once get_template_directory() . '/afsThemeOptions/ajax/userForm.php';
 		require_once get_template_directory() . '/afsThemeOptions/ajax/contactFormFooter.php';
 		require_once get_template_directory() . '/afsThemeOptions/ajax/createAndUpdatePost.php';
+		require_once get_template_directory() . '/afsThemeOptions/ajax/uploadExistingFiles.php';
+		require_once get_template_directory() . '/afsThemeOptions/ajax/paypalSubscribe.php';
 		require_once get_template_directory() . '/afsThemeOptions/ajax/filters/getWpData.php';
 		require_once get_template_directory() . '/afsThemeOptions/ajax/filters/goodsFilters.php';
 
@@ -27,11 +29,15 @@ class StartTheme
 
 	public function requireClasses()
 	{
+		new \AFS\Ads();
 		new \AFS\ThemeSetup();
 		new \AFS\ThemeRoutes();
 		new \AFS\ThemeScriptsAndStyles();
 		new \AFS\UserSetup();
 		new \AFS\PostDeleteAndEdit();
+		new \AFS\UserSubscribe();
+		//TODO: Вернуть задание по крону
+//		new \AFS\Crone();
 	}
 
 	public function requireFiles()

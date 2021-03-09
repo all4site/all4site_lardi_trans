@@ -8,7 +8,7 @@ $categoryName = 'transports';
 	<div class="container-fluid">
 		<div class="row  bg-grey-light">
 			<div class="col-md-5 text-center m-auto py-4">
-				<h4 class="text-center font-weight-bold"><?php _e( 'Добавить объявление в категорию "Груз"', 'lardi' ) ?></h4>
+				<h4 class="text-center font-weight-bold"><?php _e( 'Добавить объявление в категорию "Транспорт"', 'lardi' ) ?></h4>
 				<p class="mt-4"><?php _e( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti, provident?', 'lardi' ) ?></p>
 
 				<form action="" method="post" class="mt-5 " id="globalForm" name="globalForm" @submit.prevent="getFormData">
@@ -23,7 +23,7 @@ $categoryName = 'transports';
 						'title'        => 'Заголовок',
 						'type'         => 'text',
 						'args'         => 'title',
-						'value'        => $args['title'],
+						'value'        => ( isset( $args['title'] ) ) ? $args['title'] : '',
 						'wrpper-class' => '',
 						'input-class'  => ''
 					] ) ?>
@@ -31,7 +31,7 @@ $categoryName = 'transports';
 						'title'        => 'Откуда?',
 						'type'         => 'text',
 						'args'         => 'from',
-						'value'        => $args['from'],
+						'value'        => ( isset( $args['from'] ) ) ? $args['from'] : '',
 						'wrpper-class' => '',
 						'input-class'  => ''
 					] ) ?>
@@ -39,21 +39,21 @@ $categoryName = 'transports';
 						'title'        => 'Куда?',
 						'type'         => 'text',
 						'args'         => 'where',
-						'value'        => $args['where'],
+						'value'        => ( isset( $args['where'] ) ) ? $args['where'] : '',
 						'wrpper-class' => '',
 						'input-class'  => ''
 					] ) ?>
 					<?php get_template_part( 'afsThemeOptions/template/formPart/date', '', [
-						'value' => $args['date'],
+						'value' => ( isset( $args['date'] ) ) ? $args['date'] : '',
 					] ) ?>
 					<?php get_template_part( 'afsThemeOptions/template/formPart/time', '', [
-						'value' => $args['time'],
+						'value' => ( isset( $args['time'] ) ) ? $args['time'] : '',
 					] ) ?>
 					<?php get_template_part( 'afsThemeOptions/template/formPart/select', '', [
 						'title'          => 'Тип кузова',
 						'args'           => 'bodyType',
 						'select-options' => fw_get_db_settings_option( 'addBodyType' ),
-						'value'          => $args['bodyType'],
+						'value'          => ( isset( $args['bodyType'] ) ) ? $args['bodyType'] : '',
 						'wrpper-class'   => '',
 						'input-class'    => ''
 
@@ -65,7 +65,7 @@ $categoryName = 'transports';
 							'title'        => 'Длинна в М',
 							'type'         => 'number',
 							'args'         => 'lenth',
-							'value'        => $args['lenth'],
+							'value'        => ( isset( $args['lenth'] ) ) ? $args['lenth'] : '',
 							'wrpper-class' => 'col-md-4 pr-2',
 							'input-class'  => ''
 						] ) ?>
@@ -73,7 +73,7 @@ $categoryName = 'transports';
 							'title'        => 'Ширина в М',
 							'type'         => 'number',
 							'args'         => 'width',
-							'value'        => $args['width'],
+							'value'        =>( isset(  $args['width'] ) ) ?  $args['width'] : '',
 							'wrpper-class' => 'col-md-4 px-1',
 							'input-class'  => ''
 						] ) ?>
@@ -81,7 +81,7 @@ $categoryName = 'transports';
 							'title'        => 'Высота в М',
 							'type'         => 'number',
 							'args'         => 'height',
-							'value'        => $args['height'],
+							'value'        => ( isset( $args['height'] ) ) ? $args['height'] : '',
 							'wrpper-class' => 'col-md-4 pl-2',
 							'input-class'  => ''
 						] ) ?>
@@ -91,7 +91,7 @@ $categoryName = 'transports';
 						'title'            => 'Грузоподьемность',
 						'type'             => 'number',
 						'args'             => 'carrying',
-						'value'            => $args['carrying'],
+						'value'            => ( isset( $args['carrying'] ) ) ? $args['carrying'] : '',
 						'wrpper-class'     => '',
 						'input-class'      => '',
 						'label-text'       => 'кг',
@@ -101,7 +101,7 @@ $categoryName = 'transports';
 						'title'            => 'Обьем',
 						'type'             => 'number',
 						'args'             => 'volume',
-						'value'            => $args['volume'],
+						'value'            => ( isset( $args['volume'] ) ) ? $args['volume'] : '',
 						'wrpper-class'     => '',
 						'input-class'      => '',
 						'label-text'       => 'литры',
@@ -111,7 +111,7 @@ $categoryName = 'transports';
 						'title'          => 'Тип загрузки',
 						'args'           => 'loadingType',
 						'select-options' => fw_get_db_settings_option( 'addLoadingType' ),
-						'value'          => $args['loadingType'],
+						'value'          => ( isset( $args['loadingType'] ) ) ? $args['loadingType'] : '',
 						'wrpper-class'   => '',
 						'input-class'    => ''
 
@@ -120,12 +120,12 @@ $categoryName = 'transports';
 						'title'        => 'Сборный груз (возможен догруз)',
 						'type'         => 'checkbox',
 						'args'         => 'groupageCargo',
-						'value'        => $args['groupageCargo'],
+						'value'        => ( isset( $args['groupageCargo'] ) ) ? $args['groupageCargo'] : '',
 						'wrpper-class' => '',
 						'input-class'  => ''
 					] ) ?>
 					<?php get_template_part( 'afsThemeOptions/template/formPart/description', '', [
-						'value' => $args['description'],
+						'value' => ( isset( $args['description'] ) ) ? $args['description'] : '',
 					] ) ?>
 
 					<?php get_template_part( 'afsThemeOptions/template/formPart/blockCost', '', $args ) ?>

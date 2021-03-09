@@ -17,7 +17,7 @@
 					'input-class'      => '',
 					'label-text'       => '',
 					'label-span-class' => '',
-					'icon-class'       => 'far fa-user footer-form-icon'
+					'icon-class'       => 'far fa-user footer-form-icon icon-rtl'
 				] ) ?>
 				<?php get_template_part( 'afsThemeOptions/template/formPart/input', 'icon', [
 					'title'            => 'Email',
@@ -28,7 +28,7 @@
 					'input-class'      => '',
 					'label-text'       => '',
 					'label-span-class' => '',
-					'icon-class'       => 'far fa-envelope footer-form-icon'
+					'icon-class'       => 'far fa-envelope footer-form-icon icon-rtl'
 				] ) ?>
 			</div>
 
@@ -38,11 +38,11 @@
 					'id'           => 'footerDescription',
 					'value'        => 'Сообщение',
 					'wrpper-class' => 'col-md-8',
-					'icon-class'   => 'far fa-edit footer-form-icon',
-					'textarea-row' => '3'
+					'icon-class'   => 'far fa-edit footer-form-icon icon-rtl',
+					'textarea-row' => '2'
 				] ) ?>
 
-				<div class="form-group col-md-4 d-flex ">
+				<div class="form-group col-md-4 d-flex my-btn-footer">
 					<button type="submit" class="btn btn-primary btn-block"><?php _e( 'Отправить', 'lardi' ) ?></button>
 				</div>
 			</div>

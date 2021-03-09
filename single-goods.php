@@ -38,15 +38,7 @@ $cost = currency( $args['costInput'], $args['currency'] );
 			</div>
 		</div>
 
-		<div class="col-md-3 ml-md-1 d-flex justify-content-center" id="adsBlock" is="adsBlock" inline-template>
-			<div class="row position-relative">
-				<div class="asd-wrapper" :class="data" :style="{top: dataCss}">
-					<?php get_template_part( 'afsThemeOptions/template/adds/userProfile/add', 'one', $adsData ) ?>
-					<?php get_template_part( 'afsThemeOptions/template/adds/userProfile/add', 'two', $adsData ) ?>
-
-				</div>
-			</div>
-		</div>
+		<?php get_template_part( 'afsThemeOptions/template/adds/ads', 'right' ) ?>
 	</div>
 
 <?php get_footer() ?>

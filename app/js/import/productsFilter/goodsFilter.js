@@ -3,7 +3,7 @@ Vue.component('goodsFilter', {
 		maxPage: '',
 		currentPage: '',
 		show: '',
-		spiner: false
+		spiner: false,
 	}),
 	methods: {
 
@@ -48,9 +48,9 @@ Vue.component('goodsFilter', {
 			this.sendDataToServer()
 		},
 
-		dateReset()
+		dateReset(target)
 		{
-			document.getElementById('date').value = ''
+			document.getElementById(target).value = ''
 			this.sendDataToServer()
 		},
 

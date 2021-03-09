@@ -1,0 +1,50 @@
+html,
+body {
+    direction: rtl;
+}
+
+.orig{
+    text-align: right !important;
+}
+
+.user-dropdown-menu{
+    left: 0;
+    right: auto;
+}
+.userMenu li:before{
+    left: auto;
+    right: 20px;
+    transform: rotate(180deg);
+}
+.icon-rtl{
+    text-align: left;
+    display: block;
+    width: 90%;
+}
+
+.my-menu-wrapper{
+    margin-right: -250px;
+    margin-left: 0;
+}
+.my-menu-show{
+    margin-right: 0;
+}
+
+.my-checkbox + label span{
+    margin-left: 1rem;
+    margin-right: 0;
+}
+
+#ajaxsearchliteres2{
+    left: 50px !important;
+}
+
+.rounded-left-top{
+    border-top-right-radius: 0.25rem !important;
+    border-top-left-radius: 0 !important;
+}
+
+.rounded-left-bottom{
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0.25rem !important;
+}

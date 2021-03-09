@@ -1,6 +1,8 @@
 <?php
-use AFS\FormValidation;
+
 use AFS\FormSanitize;
+use AFS\FormValidation;
+
 add_action( 'wp_ajax_createAndUpdatePost', 'createAndUpdatePost' );
 add_action( 'wp_ajax_nopriv_createAndUpdatePost', 'createAndUpdatePost' );
 require_once( ABSPATH . 'wp-admin/includes/image.php' );
@@ -66,7 +68,7 @@ function createAndUpdatePost()
 					'name'          => $value['name']
 				];
 
-
+				dump($value);
 				if ( is_wp_error( $photo[ $key ]['attachment_id'] ) )
 				{
 					$form_error->add( 'upload', $photo[ $key ]['attachment_id']->get_error_messages() );
@@ -79,7 +81,7 @@ function createAndUpdatePost()
 				wp_send_json_error( 'Ошибка при загрузке файла' );
 			} else
 			{
-
+				set_post_thumbnail($postId, $photo[0]['attachment_id']);
 				$userCustomPost['photo'] = $photo;
 				update_post_meta( $postId, 'fw_options', $userCustomPost );
 			}

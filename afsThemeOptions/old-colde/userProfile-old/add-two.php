@@ -1,5 +1,7 @@
 <div class="col-md-12 mt-3">
-	<a href="<?php echo $args['userSetupBottom']['adsRreferalLink'] ?>" class="text-dark text-decoration-none">
+	<a 
+		href="<?php echo ( isset( $args['userSetupBottom']['adsRreferalLink'] ) ) ? $args['userSetupBottom']['adsRreferalLink'] : '' ?>"
+		class="text-dark text-decoration-none">
 		<div class="card text-secondary border-0">
 			<?php if ( ! empty( $args['userSetupBottom']['adsImage']['attachment_id'] ) ) : ?>
 				<?php echo wp_get_attachment_image(

@@ -8,7 +8,6 @@ $options = [
 				'label' => esc_html__( 'Фото', 'workreap' ),
 				'type'  => 'multi-upload',
 				'value' => '',
-
 			),
 			'title' => array(
 				'label'      => esc_html__( 'Заголовк', 'workreap' ),

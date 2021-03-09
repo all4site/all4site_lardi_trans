@@ -9,6 +9,9 @@ import './import/oneImageUpload'
 import './import/slick'
 import './import/popup'
 import './import/loadMore'
+import './import/userDropdownMenu'
+import './import/paypal'
+import './import/sliceMenu'
 
 import './import/productsFilter/goodsFilter'
 

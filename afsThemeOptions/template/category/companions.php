@@ -17,13 +17,13 @@ $categoryName = 'companions';
 					<input type="text" hidden name="category" value="<?php echo $categoryName ?>">
 					<input type="text" hidden name="postID" value="<?php echo $postId ?>" id="postID">
 
-					<?php get_template_part( 'afsThemeOptions/template/formPart/fileUpload', '', $args['photo'] ) ?>
+					<?php get_template_part( 'afsThemeOptions/template/formPart/fileUpload') ?>
 
 					<?php get_template_part( 'afsThemeOptions/template/formPart/input', '', [
 						'title'        => 'Заголовок',
 						'type'         => 'text',
 						'args'         => 'title',
-						'value'        => $args['title'],
+						'value'        => ( isset( $args['title'] ) ) ? $args['title'] : '',
 						'wrpper-class' => '',
 						'input-class'  => ''
 					] ) ?>
@@ -31,7 +31,7 @@ $categoryName = 'companions';
 						'title'        => 'Откуда?',
 						'type'         => 'text',
 						'args'         => 'from',
-						'value'        => $args['from'],
+						'value'        => ( isset( $args['from'] ) ) ? $args['from'] : '',
 						'wrpper-class' => '',
 						'input-class'  => ''
 					] ) ?>
@@ -39,7 +39,7 @@ $categoryName = 'companions';
 						'title'        => 'Куда?',
 						'type'         => 'text',
 						'args'         => 'where',
-						'value'        => $args['where'],
+						'value'        => ( isset( $args['where'] ) ) ? $args['where'] : '',
 						'wrpper-class' => '',
 						'input-class'  => ''
 					] ) ?>
@@ -47,7 +47,7 @@ $categoryName = 'companions';
 						'title'          => 'Тип кузова',
 						'args'           => 'bodyType',
 						'select-options' => fw_get_db_settings_option( 'addBodyType' ),
-						'value'          => $args['bodyType'],
+						'value'          => ( isset( $args['bodyType'] ) ) ? $args['bodyType'] : '',
 						'wrpper-class'   => '',
 						'input-class'    => ''
 
@@ -56,7 +56,7 @@ $categoryName = 'companions';
 						'title'          => 'Марка авто',
 						'args'           => 'carModel',
 						'select-options' => fw_get_db_settings_option( 'addCarModel' ),
-						'value'          => $args['carModel'],
+						'value'          => ( isset( $args['carModel'] ) ) ? $args['carModel'] : '',
 						'wrpper-class'   => '',
 						'input-class'    => ''
 					] ) ?>
@@ -64,18 +64,18 @@ $categoryName = 'companions';
 						'title'        => 'Количество людей',
 						'type'         => 'number',
 						'args'         => 'peopleCount',
-						'value'        => $args['peopleCount'],
+						'value'        => ( isset( $args['peopleCount'] ) ) ? $args['peopleCount'] : '',
 						'wrpper-class' => '',
 						'input-class'  => ''
 					] ) ?>
 					<?php get_template_part( 'afsThemeOptions/template/formPart/date', '', [
-						'value' => $args['date'],
+						'value' =>( isset(  $args['date'] ) ) ?  $args['date'] : '',
 					] ) ?>
 					<?php get_template_part( 'afsThemeOptions/template/formPart/time', '', [
-						'value' => $args['time'],
+						'value' => ( isset( $args['time'] ) ) ? $args['time'] : '',
 					] ) ?>
 					<?php get_template_part( 'afsThemeOptions/template/formPart/description', '', [
-						'value' => $args['description'],
+						'value' => ( isset( $args['description'] ) ) ? $args['description'] : '',
 					] ) ?>
 
 					<?php get_template_part( 'afsThemeOptions/template/formPart/blockCost', '', $args ) ?>

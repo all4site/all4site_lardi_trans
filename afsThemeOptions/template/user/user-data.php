@@ -3,9 +3,9 @@
 	<h4 class="text-center mb-5"><?php _e( 'Личные данные', 'lardi' ) ?></h4>
 
 	<div is="userData" inline-template>
-		<form action="" method="post" class="col-md-7 m-auto" @submit.prevent="submit" id="userData">
+		<form action="" method="post" class="col-md-7 m-auto p-0" @submit.prevent="submit" id="userData">
 
-<!--			--><?php //get_template_part( 'afsThemeOptions/template/preloader/spinner' ) ?>
+			<!--			--><?php //get_template_part( 'afsThemeOptions/template/preloader/spinner' ) ?>
 
 			<?php get_template_part( 'afsThemeOptions/template/formPart/input', '', [
 				'title'        => 'Имя',
@@ -38,7 +38,7 @@
 				'title'        => 'Выберите фото профиля',
 				'type'         => 'file',
 				'args'         => 'customFile',
-				'value'        => $args['customFile'],
+				'value'        => ( isset( $args['customFile'] ) ) ? $args['customFile'] : '',
 				'wrpper-class' => '',
 				'input-class'  => ''
 			] ) ?>
@@ -78,7 +78,7 @@
 		<div>
 			<h4 class="text-center mt-8"><?php _e( 'Изменить пароль', 'lardi' ) ?></h4>
 			<p class="text-center mb-5"><?php _e( 'Пароль должен содержать не менее 6 символов.', 'lardi' ) ?></p>
-			<form action="" method="post" class="col-md-7 m-auto" @submit.prevent="passwordChange" id="passwordChnage">
+			<form action="" method="post" class="col-md-7 m-auto p-0" @submit.prevent="passwordChange" id="passwordChnage">
 
 				<?php echo get_template_part( 'afsThemeOptions/template/preloader/preloader' ) ?>
 

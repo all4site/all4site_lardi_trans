@@ -8,7 +8,7 @@ $arg = [
 $wp_query = new WP_Query( $arg );
 //dump($postType)
 ?>
-<div id="posts" class="col-md-12">
+<div id="posts" class="col-md-12  mt-md-0 mt-4">
 	<?php get_template_part( 'afsThemeOptions/template/frontend/archive/goods', 'ajax', $wp_query ) ?>
 </div>
 

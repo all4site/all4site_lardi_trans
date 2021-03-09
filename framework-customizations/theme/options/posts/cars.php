@@ -111,7 +111,7 @@ $options = [
 				'value' => '',
 				'fw-storage' => [
 					'type'      => 'post-meta',
-					'post-meta' => 'goodsCost',
+					'post-meta' => 'costInput',
 				],
 			),
 			'currency'      => array(

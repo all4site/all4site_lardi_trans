@@ -1,5 +1,8 @@
-<div class="form-group position-relative <?php echo $args['wrpper-class'] ?>">
-	<select name="<?php echo $args['args'] ?>" id="<?php echo $args['args'] ?>" class="form-control text-secondary" type="select" <?php echo $args['vue-data']?>>
+<div class="form-group position-relative <?php echo ( isset( $args['wrpper-class'] ) ) ? $args['wrpper-class'] : '' ?>">
+	<select 
+		name="<?php echo ( isset( $args['args'] ) ) ? $args['args'] : '' ?>" 
+		id="<?php echo ( isset( $args['args'] ) ) ? $args['args'] : '' ?>" 
+		class="form-control text-secondary" type="select" <?php echo ( isset( $args['vue-data'] ) ) ? $args['vue-data'] : ''?>>
 
 		<option selected disabled value=""><?php echo $args['title'] ?></option>
 		<?php foreach ( $args['select-options'] as $key => $value ): ?>

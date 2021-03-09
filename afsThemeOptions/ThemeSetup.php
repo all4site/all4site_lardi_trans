@@ -36,6 +36,7 @@ class ThemeSetup
 
 	public function init()
 	{
+		add_theme_support( 'post-thumbnails' );
 		add_action( 'init', [ $this, 'createCustomPostType' ] );
 		add_action( 'after_switch_theme', [ $this, 'createPages' ] );
 		add_action( 'switch_theme', [ $this, 'deletePagesAndCustomPostType' ] );
@@ -43,6 +44,7 @@ class ThemeSetup
 		add_action( 'admin_menu', [ $this, 'removeMenu' ], 99 );
 		add_filter( 'login_redirect', [ $this, 'filter_function_name_7309' ], 10, 3 );
 		add_action( 'pre_get_posts', [ $this, 'paginationForArchive' ] );
+		add_filter( 'script_loader_src', [ $this, 'paypal' ] );
 		//TODO Отключил скрытие технических страниц для разработки - НАДО ВКЛЮЧИТЬ
 //		add_action( 'pre_get_posts', [ $this, 'hideServicePage' ] );
 	}
@@ -96,7 +98,7 @@ class ThemeSetup
 					'has_archive'        => true,
 					'hierarchical'       => false,
 					'menu_position'      => 20,
-					'supports'           => array( 'title', 'author' ),
+					'supports'           => array( 'title', 'author', 'thumbnail' ),
 //			'taxonomies'         => array( 'archive' ),
 					'show_in_rest'       => true
 				) );
@@ -176,8 +178,13 @@ class ThemeSetup
 		return $query;
 	}
 
+
 	public function paginationForArchive( $query )
 	{
+//		if ( ! is_admin() && $query->is_main_query() && $query->is_search() )
+//		{
+//			$query->set( 'posts_per_page', 1 );
+//		}
 
 		foreach ( $this->postType as $key => $value )
 		{
@@ -190,6 +197,13 @@ class ThemeSetup
 			}
 		}
 
+	}
+
+	public function paypal( $src )
+	{
+		$parts = explode( '&', $src );
+
+		return $parts[0];
 	}
 
 }

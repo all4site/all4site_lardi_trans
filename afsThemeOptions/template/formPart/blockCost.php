@@ -4,7 +4,7 @@
 		'title'        => 'Введите цену',
 		'type'         => 'number',
 		'args'         => 'costInput',
-		'value'        => $args['costInput'],
+		'value'        => ( isset( $args['costInput'] ) ) ? $args['costInput'] : '',
 		'wrpper-class' => 'col-md-9 pr-1',
 		'input-class'  => ''
 
@@ -13,7 +13,7 @@
 		'title'          => 'Валюта',
 		'args'           => 'currency',
 		'select-options' => fw_get_db_settings_option( 'addCurrency' ),
-		'value'          => $args['currency'],
+		'value'          => ( isset( $args['currency'] ) ) ? $args['currency'] : '',
 		'wrpper-class'   => 'col-md-3 pl-1',
 		'input-class'    => ''
 
@@ -22,7 +22,7 @@
 		'title'          => 'Форма оплаты',
 		'args'           => 'paymentFrom',
 		'select-options' => fw_get_db_settings_option( 'addPaymentFrom' ),
-		'value'          => $args['paymentFrom'],
+		'value'          => ( isset( $args['paymentFrom'] ) ) ? $args['paymentFrom'] : '',
 		'wrpper-class'   => 'col-md-12',
 		'input-class'    => ''
 	] ) ?>
@@ -30,7 +30,7 @@
 		'title'          => 'Момент оплаты',
 		'args'           => 'paymentMoment',
 		'select-options' => fw_get_db_settings_option( 'addPaymentMoment' ),
-		'value'          => $args['paymentMoment'],
+		'value'          => ( isset( $args['paymentMoment'] ) ) ? $args['paymentMoment'] : '',
 		'wrpper-class'   => 'col-md-12',
 		'input-class'    => ''
 	] ) ?>

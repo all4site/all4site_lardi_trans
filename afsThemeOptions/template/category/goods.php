@@ -25,7 +25,7 @@ $categoryName = 'goods';
 						'title'        => 'Заголовок',
 						'type'         => 'text',
 						'args'         => 'title',
-						'value'        => $args['title'],
+						'value'        => ( isset( $args['title'] ) ) ? $args['title'] : '',
 						'wrpper-class' => '',
 						'input-class'  => ''
 					] ) ?>
@@ -33,7 +33,7 @@ $categoryName = 'goods';
 						'title'        => 'Откуда?',
 						'type'         => 'text',
 						'args'         => 'from',
-						'value'        => $args['from'],
+						'value'        => ( isset( $args['from'] ) ) ? $args['from'] : '',
 						'wrpper-class' => '',
 						'input-class'  => ''
 					] ) ?>
@@ -41,15 +41,15 @@ $categoryName = 'goods';
 						'title'        => 'Куда?',
 						'type'         => 'text',
 						'args'         => 'where',
-						'value'        => $args['where'],
+						'value'        => ( isset( $args['where'] ) ) ? $args['where'] : '',
 						'wrpper-class' => '',
 						'input-class'  => ''
 					] ) ?>
 					<?php get_template_part( 'afsThemeOptions/template/formPart/date', '', [
-						'value' => $args['date'],
+						'value' => ( isset( $args['date'] ) ) ? $args['date'] : '',
 					] ) ?>
 					<?php get_template_part( 'afsThemeOptions/template/formPart/time', '', [
-						'value' => $args['time'],
+						'value' => ( isset( $args['time'] ) ) ? $args['time'] : '',
 					] ) ?>
 
 					<h5 class="font-weight-bold mt-5 mb-4 col">Габариты кузова</h5>
@@ -58,7 +58,7 @@ $categoryName = 'goods';
 							'title'        => 'Длинна в М',
 							'type'         => 'number',
 							'args'         => 'lenth',
-							'value'        => $args['lenth'],
+							'value'        => ( isset( $args['lenth'] ) ) ? $args['lenth'] : '',
 							'wrpper-class' => 'col-md-4 pr-2',
 							'input-class'  => ''
 						] ) ?>
@@ -66,7 +66,7 @@ $categoryName = 'goods';
 							'title'        => 'Ширина в М',
 							'type'         => 'number',
 							'args'         => 'width',
-							'value'        => $args['width'],
+							'value'        => ( isset( $args['width'] ) ) ? $args['width'] : '',
 							'wrpper-class' => 'col-md-4 px-1',
 							'input-class'  => ''
 						] ) ?>
@@ -74,7 +74,7 @@ $categoryName = 'goods';
 							'title'        => 'Высота в М',
 							'type'         => 'number',
 							'args'         => 'height',
-							'value'        => $args['height'],
+							'value'        => ( isset( $args['height'] ) ) ? $args['height'] : '',
 							'wrpper-class' => 'col-md-4 pl-2',
 							'input-class'  => ''
 						] ) ?>
@@ -84,7 +84,7 @@ $categoryName = 'goods';
 						'title'            => 'Масса',
 						'type'             => 'number',
 						'args'             => 'weight',
-						'value'            => $args['weight'],
+						'value'            => ( isset( $args['weight'] ) ) ? $args['weight'] : '',
 						'wrpper-class'     => '',
 						'input-class'      => '',
 						'label-text'       => 'кг',
@@ -94,7 +94,7 @@ $categoryName = 'goods';
 						'title'            => 'Обьем',
 						'type'             => 'number',
 						'args'             => 'volume',
-						'value'            => $args['volume'],
+						'value'            => ( isset( $args['volume'] ) ) ? $args['volume'] : '',
 						'wrpper-class'     => '',
 						'input-class'      => '',
 						'label-text'       => 'литры',
@@ -104,9 +104,9 @@ $categoryName = 'goods';
 					<?php get_template_part( 'afsThemeOptions/template/formPart/checkbox', '', [
 						'title'        => 'Согласен в составе сборного груза',
 						'type'         => 'checkbox',
-						'id'         => 'groupageCargo',
+						'id'           => 'groupageCargo',
 						'name'         => 'groupageCargo',
-						'value'        => ( $args['groupageCargo'] ) ? $args['groupageCargo'] : '0',
+						'value'        => ( isset($args['groupageCargo']) ) ? $args['groupageCargo'] : '0',
 						'wrpper-class' => '',
 						'input-class'  => ''
 					] ) ?>
@@ -115,14 +115,14 @@ $categoryName = 'goods';
 						'title'          => 'Тип кузова',
 						'args'           => 'bodyType',
 						'select-options' => fw_get_db_settings_option( 'addBodyType' ),
-						'value'          => $args['bodyType'],
+						'value'          => ( isset( $args['bodyType'] ) ) ? $args['bodyType'] : '',
 						'wrpper-class'   => '',
 						'input-class'    => ''
 
 					] ) ?>
 
 					<?php get_template_part( 'afsThemeOptions/template/formPart/description', '', [
-						'value' => $args['description'],
+						'value' => ( isset( $args['description'] ) ) ? $args['description'] : '',
 					] ) ?>
 
 					<?php get_template_part( 'afsThemeOptions/template/formPart/blockCost', '', $args ) ?>

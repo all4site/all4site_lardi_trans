@@ -5,11 +5,11 @@
 			<?php get_template_part( 'afsThemeOptions/template/footer/footerContactForm' ); ?>
 		</div>
 
-		<div class="row bg-grey pt-5 pb-3 mb-05 pb-5">
+		<div class="row bg-viollet pt-5 pb-3 mb-05 pb-5">
 			<?php get_template_part( 'afsThemeOptions/template/footer/footerBottom' ); ?>
 		</div>
 
-		<div class="row bg-grey py-4">
+		<div class="row bg-viollet py-4">
 			<?php get_template_part( 'afsThemeOptions/template/footer/footerAllRights' ); ?>
 		</div>
 	</div>

@@ -8,12 +8,13 @@ $moreCheckbox = [
 	'riggingWorks' => 'такелажные работы'
 ];
 $postType     = 'offices';
+$title = 'Перевозка офиса / квартиры';
 //dump( get_post_meta( 2263, '', true ) );
 ?>
 	<div class="container-fluid d-flex flex-wrap wrapper justify-content-center">
 
 		<div class="row col-md-3 mr-md-4 bg-viollet text-white rounded-left-top rounded-left-bottom h-fit-content">
-			<h3 class="font-weight-bold mt-3 mb-5 col-12">Перевозка офиса / квартиры</h3>
+			<h3 class="font-weight-bold mt-3 mb-5 col-12"><?php echo $title?></h3>
 			<div is="goodsFilter" inline-template>
 				<form action="" method="post" id="goodsFilter" name="goodsFilter" class="mb-5" @submit.prevent="sendDataToServer">
 
@@ -50,7 +51,7 @@ $postType     = 'offices';
 							'title'        => 'Выберите дату',
 							'type'         => 'date',
 							'args'         => 'date',
-							'value'        => $args['from'],
+							'value'        => ( isset( $args['from'] ) ) ? $args['from'] : '',
 							'wrpper-class' => 'col-12 p-0',
 							'input-class'  => '',
 							'vue-data'     => '@change="sendDataToServerFunction"'
@@ -95,14 +96,7 @@ $postType     = 'offices';
 			<?php get_template_part( 'afsThemeOptions/template/frontend/archive/goods', 'archive', $postType ) ?>
 		</div>
 
-		<div class="col-md-3 ml-md-1 d-flex justify-content-center" id="adsBlock" is="adsBlock" inline-template>
-			<div class="row position-relative">
-				<div class="asd-wrapper" :class="data" :style="{top: dataCss}">
-					<?php get_template_part( 'afsThemeOptions/template/adds/userProfile/add', 'one', $adsData ) ?>
-					<?php get_template_part( 'afsThemeOptions/template/adds/userProfile/add', 'two', $adsData ) ?>
-				</div>
-			</div>
-		</div>
+		<?php get_template_part( 'afsThemeOptions/template/adds/ads', 'right' ) ?>
 	</div>
 
 <?php get_footer() ?>

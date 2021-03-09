@@ -19,6 +19,11 @@ $options = [
 				'type'  => 'text',
 				'value' => ''
 			),
+			'logo'          => array(
+				'label' => esc_html__( 'Logo', 'lardi' ),
+				'type'  => 'upload',
+				'value' => ''
+			),
 
 		),
 	],
@@ -282,11 +287,141 @@ $options = [
 		'title'   => esc_html__( 'Настройки постов', 'lardi' ),
 		'type'    => 'tab',
 		'options' => array(
-			'postPerPage' => array(
+			'postPerPage'     => array(
 				'label' => esc_html__( 'Количество на странице', 'lardi' ),
 				'type'  => 'number',
 				'value' => ''
 			),
+			'postPerHomePage' => array(
+				'label' => esc_html__( 'Количество на главной странице', 'lardi' ),
+				'type'  => 'number',
+				'value' => ''
+			),
+		),
+	],
+
+	'paypal_options' => [
+		'title'   => esc_html__( 'Настройка подписки', 'lardi' ),
+		'type'    => 'tab',
+		'options' => array(
+			'paypalID'       => array(
+				'label' => esc_html__( 'Client ID', 'lardi' ),
+				'type'  => 'text',
+				'value' => '',
+			),
+			'subscribeOffOn' => array(
+				'label' => esc_html__( 'Вклюить или выключить подписку', 'lardi' ),
+				'type'  => 'switch',
+				'value' => '',
+			),
+			'subscribeData'  => [
+				'label'         => esc_html__( 'Подписка правила', 'lardi' ),
+				'type'          => 'popup',
+				'popup-options' => [
+					'price'      => array(
+						'label' => esc_html__( 'Цена', 'lardi' ),
+						'type'  => 'text'
+					),
+					'priceSmall' => array(
+						'label' => esc_html__( 'Дней', 'lardi' ),
+						'type'  => 'text'
+					),
+					'priceTextarea' => array(
+						'label' => esc_html__( 'Описание', 'lardi' ),
+						'type'  => 'textarea'
+					),
+
+					'subscribeRules' => [
+						'label'         => esc_html__( 'Правила подписки', 'lardi' ),
+						'type'          => 'addable-popup',
+						'popup-options' => [
+							'name' => array(
+								'type'  => 'text',
+								'label' => esc_html__( 'Добавить правило', 'lardi' ),
+								'value' => '',
+								'desc'  => esc_html__( 'Добавить правило', 'lardi' ),
+							),
+						],
+						'template'      => "<div>Имя: {{-name}}</div>",
+					],
+
+				]
+			]
+		),
+	],
+
+	'ads' => [
+		'title'   => esc_html__( 'Настройка рекламмы', 'lardi' ),
+		'type'    => 'tab',
+		'options' => array(
+			'adsGlobal' => [
+				'type'    => 'group',
+				'options' => array(
+
+					'adsTopRight' => array(
+						'label'         => esc_html__( 'Право верх', 'lardi' ),
+						'desc'          => esc_html__( 'Добавить рекламму', 'lardi' ),
+						'type'          => 'popup',
+						'popup-options' => array(
+							'link'   => array(
+								'label' => esc_html__( 'Ссылка на ркламму', 'lardi' ),
+								'type'  => 'text'
+							),
+							'text'   => array(
+								'label' => esc_html__( 'Текст поверх рекламмы', 'lardi' ),
+								'type'  => 'text'
+							),
+							'upload' => array(
+								'label' => esc_html__( 'Картинка для рекламмы', 'lardi' ),
+								'type'  => 'upload'
+							),
+						),
+					),
+
+					'adsBottomRight' => array(
+
+						'desc'          => esc_html__( 'Добавить рекламму', 'lardi' ),
+						'type'          => 'popup',
+						'popup-options' => array(
+							'link'   => array(
+								'label' => esc_html__( 'Ссылка на ркламму', 'lardi' ),
+								'type'  => 'text'
+							),
+							'text'   => array(
+								'label' => esc_html__( 'Текст поверх рекламмы', 'lardi' ),
+								'type'  => 'text'
+							),
+							'upload' => array(
+								'label' => esc_html__( 'Картинка для рекламмы', 'lardi' ),
+								'type'  => 'upload'
+							),
+						),
+					),
+
+					'adsSmallTop' => array(
+
+						'desc'          => esc_html__( 'Добавить рекламму', 'lardi' ),
+						'type'          => 'popup',
+						'popup-options' => array(
+							'link'   => array(
+								'label' => esc_html__( 'Ссылка на ркламму', 'lardi' ),
+								'type'  => 'text'
+							),
+							'text'   => array(
+								'label' => esc_html__( 'Текст поверх рекламмы', 'lardi' ),
+								'type'  => 'text'
+							),
+							'upload' => array(
+								'label' => esc_html__( 'Картинка для рекламмы', 'lardi' ),
+								'type'  => 'upload'
+							),
+						),
+					),
+
+				),
+			],
+
+
 		),
 	],
 

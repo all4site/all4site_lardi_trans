@@ -21,27 +21,32 @@ function createCategoryBlock()
 		'goods'      => [
 			'name'  => __( 'Груз', 'lardi' ),
 			'image' => 'good',
-			'link'  => home_url() . '/create/?goods'
+			'link'  => home_url() . '/create/?goods',
+			'icon' => '<i class="fas fa-dolly"></i>'
 		],
 		'transports' => [
 			'name'  => __( 'Транспорт', 'lardi' ),
 			'image' => 'transport',
-			'link'  => home_url() . '/create/?transports'
+			'link'  => home_url() . '/create/?transports',
+			'icon' => '<i class="fas fa-truck"></i>'
 		],
 		'offices'    => [
 			'name'  => __( 'Перевозка офиса', 'lardi' ),
 			'image' => 'officeTransportation',
-			'link'  => home_url() . '/create/?offices'
+			'link'  => home_url() . '/create/?offices',
+			'icon' => '<i class="fas fa-people-carry"></i>'
 		],
 		'cars'       => [
 			'name'  => __( 'Попутное авто', 'lardi' ),
 			'image' => 'passingCar',
-			'link'  => home_url() . '/create/?cars'
+			'link'  => home_url() . '/create/?cars',
+			'icon' => '<i class="fas fa-car-side"></i>'
 		],
 		'companions' => [
 			'name'  => __( 'Попутчик', 'lardi' ),
 			'image' => 'companion',
-			'link'  => home_url() . '/create/?companions'
+			'link'  => home_url() . '/create/?companions',
+			'icon' => '<i class="fas fa-walking"></i>'
 		],
 	];
 
@@ -50,21 +55,40 @@ function createCategoryBlock()
 
 function linkInUserProfile()
 {
-	$data = [
-		'myAnnouncements' => [
-			'name' => __( 'Мои обьявления', 'lardi' ),
-			'link' => home_url() . '/user/?userposts',
-		],
-		'subscribe'       => [
-			'name' => __( 'Подписка', 'lardi' ),
-			'link' => home_url() . '/user/?subscribe',
-		],
-		'profileSetup'    => [
-			'name' => __( 'Настройка профиля', 'lardi' ),
-			'link' => home_url() . '/user/?profile',
-		],
+	$subscribeOffOn = fw_get_db_settings_option( 'subscribeOffOn' );
+	if ( $subscribeOffOn )
+	{
+		$data = [
+			'myAnnouncements' => [
+				'name' => __( 'Мои обьявления', 'lardi' ),
+				'link' => home_url() . '/user/?userposts',
+			],
+			'subscribe'       => [
+				'name' => __( 'Подписка', 'lardi' ),
+				'link' => home_url() . '/user/?subscribe',
+			],
+			'profileSetup'    => [
+				'name' => __( 'Настройка профиля', 'lardi' ),
+				'link' => home_url() . '/user/?profile',
+			],
 
-	];
+		];
+	} else
+	{
+
+		$data = [
+			'myAnnouncements' => [
+				'name' => __( 'Мои обьявления', 'lardi' ),
+				'link' => home_url() . '/user/?userposts',
+			],
+			'profileSetup'    => [
+				'name' => __( 'Настройка профиля', 'lardi' ),
+				'link' => home_url() . '/user/?profile',
+			],
+
+		];
+	}
+
 
 	return $data;
 }
@@ -114,7 +138,7 @@ function getAllUserPosts()
 {
 	$currentUser = get_current_user_id();
 	$arg         = [
-		'post_type'      => 'any',
+		'post_type'      => [ 'goods', 'transports', 'cars', 'companions', 'oftransportations' ],
 		'author'         => $currentUser,
 		'post_status'    => [ 'draft ', 'publish ' ],
 		'posts_per_page' => 4,
@@ -129,8 +153,7 @@ function my_pagenavi()
 {
 	global $wp_query;
 //	dump($wp_query);
-	$big = 999999999; // уникальное число для замены
-
+	$big  = 999999999; // уникальное число для замены
 	$args = array(
 		'base'      => str_replace( $big, '%#%', get_pagenum_link( $big ) ),
 		'format'    => '',
@@ -171,6 +194,16 @@ function currency( $costs, $currensy )
 
 
 	return $cost;
+}
+
+function subscribeDateToNumber()
+{
+	$currentSubscribeData = getCusctomFieldFromUserPost()['subscribe'];
+	$currentData          = wp_date( 'j-m-Y' );
+	$finishSubscribe      = strtotime( '+30 day', strtotime( $currentSubscribeData ) );
+
+	return intval( ( strtotime( $currentSubscribeData ) - strtotime( 'now' ) ) / 86400 );
+
 }
 
 

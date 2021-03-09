@@ -3,16 +3,15 @@
  * @var $args WP_Query
  */
 $countPosts = count_user_posts( get_current_user_id(), [ 'goods', 'transports', 'cars', 'companions', 'oftransportations' ] );
-$wp_query = $args;
+$wp_query   = $args;
 ?>
 
 <div class="col-md-8 bg-grey-light pt-5 pb-5 rounded-right-bottom">
 	<?php if ( is_object( $args ) ): ?>
 
 	<span class="text-center d-block mb-4">Всего обьявлений: <?php echo $countPosts ?> </span>
-	<?php while ( $wp_query->have_posts() ):
-	$wp_query->the_post() ?>
-	<?php
+	<?php while ( $wp_query->have_posts() ):	$wp_query->the_post();
+
 	$postID         = $args->post->ID;
 	$data           = fw_get_db_post_option( $postID, '', true );
 	$photo          = fw_get_db_post_option( $postID, 'photo', true );
@@ -36,10 +35,10 @@ $wp_query = $args;
 			<?php endif; ?>
 
 			<div class="row py-3">
-				<div class="col-md-4 pr-0">
+				<div class="col-sm-12 col-lg-4 pr-lg-0 mb-sm-3 mx-sm-auto d-sm-flex justify-content-sm-center">
 					<?php echo wp_get_attachment_image( $photo[0]['attachment_id'], 'thumbnail', '', [ 'class' => 'img-fluid rounded' ] ) ?>
 				</div>
-				<div class="col-md-8">
+				<div class="col-md-12 col-lg-8">
 
 					<h5 class="basic-font-size-small-3">Категория: <?php echo $postTypeLabel ?></h5>
 					<h5 class="font-weight-bold basic-font-size-big-1"><?php echo $currency; ?></h5>
@@ -92,7 +91,7 @@ $wp_query = $args;
 
 		<?php endwhile; ?>
 		<?php wp_reset_postdata(); ?>
-		<?php  my_pagenavi(); ?>
+		<?php my_pagenavi(); ?>
 		<?php endif; ?>
 
 		<?php if ( ! is_object( $args ) ): ?>

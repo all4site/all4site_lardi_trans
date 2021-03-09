@@ -3,7 +3,7 @@
 	'title'        => 'Имя',
 	'type'         => 'text',
 	'args'         => 'name',
-	'value'        => $args['name'],
+	'value'        => ( isset( $args['name'] ) ) ? $args['name'] : '',
 	'wrpper-class' => '',
 	'input-class'  => ''
 ] ) ?>
@@ -11,7 +11,7 @@
 	'title'        => 'Телефон',
 	'type'         => 'text',
 	'args'         => 'phone',
-	'value'        => $args['phone'],
+	'value'        => ( isset( $args['phone'] ) ) ? $args['phone'] : '',
 	'wrpper-class' => '',
 	'input-class'  => ''
 ] ) ?>
@@ -19,7 +19,7 @@
 	'title'        => 'Email',
 	'type'         => 'text',
 	'args'         => 'email',
-	'value'        => $args['email'],
+	'value'        => ( isset( $args['email'] ) ) ? $args['email'] : '',
 	'wrpper-class' => '',
 	'input-class'  => ''
 ] ) ?>

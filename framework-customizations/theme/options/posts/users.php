@@ -49,9 +49,13 @@ $options = [
 		'priority' => 'high',
 		'options' =>[
 			'subscribe' =>[
-				'type' =>'number',
+				'type' =>'date-picker',
 				'label' => esc_html__( 'Subscribe', 'workreap' ),
-				'desc'  => esc_html__( 'Сколько осталось до конца подписки', 'workreap' ),
+					'desc'  => esc_html__( 'Дата окончания подписки', 'workreap' ),
+				'fw-storage' => [
+					'type'      => 'post-meta',
+					'post-meta' => 'subscribe',
+				],
 			]
 		]
 	],

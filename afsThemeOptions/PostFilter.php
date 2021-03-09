@@ -43,6 +43,9 @@ class PostFilter
 				case 'date':
 					$dataMeta[] = self::checkMultiInputInput( $key, $value, '' );
 					continue 2;
+				case 'time':
+					$dataMeta[] = self::checkMultiInputInput( $key, $value, '' );
+					continue 2;
 				case 'lenth':
 					$dataMeta[] = self::checkMultiInputCheckbox( $key, $value, '' );
 					continue 2;
@@ -77,6 +80,9 @@ class PostFilter
 					$dataMeta[] = self::checkMultiInputInput( $key, $value, '' );
 					continue 2;
 				case 'riggingWorks':
+					$dataMeta[] = self::checkMultiInputInput( $key, $value, '' );
+					continue 2;
+				case 'peopleCount':
 					$dataMeta[] = self::checkMultiInputInput( $key, $value, '' );
 					continue 2;
 			}

@@ -23,22 +23,22 @@ $categoryName = 'offices';
 						'title'        => 'Заголовок',
 						'type'         => 'text',
 						'args'         => 'title',
-						'value'        => $args['title'],
+						'value'        => ( isset( $args['title'] ) ) ? $args['title'] : '',
 						'wrpper-class' => '',
 						'input-class'  => ''
 					] ) ?>
 
 					<?php get_template_part( 'afsThemeOptions/template/formPart/date', '', [
-						'value' => $args['date'],
+						'value' => ( isset( $args['date'] ) ) ? $args['date'] : '',
 					] ) ?>
 					<?php get_template_part( 'afsThemeOptions/template/formPart/time', '', [
-						'value' => $args['time'],
+						'value' => ( isset( $args['date'] ) ) ? $args['date'] : '',
 					] ) ?>
 					<?php get_template_part( 'afsThemeOptions/template/formPart/select', '', [
 						'title'          => 'Транспорт',
 						'args'           => 'transport',
 						'select-options' => fw_get_db_settings_option( 'addTransport' ),
-						'value'          => $args['transport'],
+						'value'          => ( isset( $args['transport'] ) ) ? $args['transport'] : '',
 						'wrpper-class'   => '',
 						'input-class'    => ''
 
@@ -48,7 +48,7 @@ $categoryName = 'offices';
 						'type'             => 'checkbox',
 						'name'             => 'loading',
 						'id'               => 'loading',
-						'value'            => $args['loading'],
+						'value'            => ( isset( $args['loading'] ) ) ? $args['loading'] : '',
 						'wrpper-class'     => 'col-md-6 mx-auto',
 						'input-class'      => '',
 						'label-span-class' => 'justify-content-end',
@@ -59,7 +59,7 @@ $categoryName = 'offices';
 						'type'             => 'checkbox',
 						'name'             => 'unloading',
 						'id'               => 'unloading',
-						'value'            => $args['unloading'],
+						'value'            => ( isset( $args['unloading'] ) ) ? $args['unloading'] : '',
 						'wrpper-class'     => 'col-md-6 mx-auto',
 						'input-class'      => '',
 						'label-span-class' => 'justify-content-end',
@@ -70,7 +70,7 @@ $categoryName = 'offices';
 						'type'             => 'checkbox',
 						'name'             => 'packaging',
 						'id'               => 'packaging',
-						'value'            => $args['packaging'],
+						'value'            => ( isset( $args['packaging'] ) ) ? $args['packaging'] : '',
 						'wrpper-class'     => 'col-md-6 mx-auto',
 						'input-class'      => '',
 						'label-span-class' => 'justify-content-end',
@@ -81,7 +81,7 @@ $categoryName = 'offices';
 						'type'             => 'checkbox',
 						'name'             => 'riggingWorks',
 						'id'               => 'riggingWorks',
-						'value'            => $args['riggingWorks'],
+						'value'            => ( isset( $args['riggingWorks'] ) ) ? $args['riggingWorks'] : '',
 						'wrpper-class'     => 'col-md-6 mx-auto',
 						'input-class'      => '',
 						'label-span-class' => 'justify-content-end',
@@ -89,7 +89,7 @@ $categoryName = 'offices';
 					] ) ?>
 
 					<?php get_template_part( 'afsThemeOptions/template/formPart/description', '', [
-						'value' => $args['description'],
+						'value' => ( isset( $args['description'] ) ) ? $args['description'] : '',
 					] ) ?>
 
 
